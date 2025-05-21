@@ -1,0 +1,31 @@
+:root {
+  --background-grey-dark-1: #28282B;
+  --background-grey-dark-2: #3A3A3E;
+  --text-grey-light-1: #E6E6E6;
+}
+
+header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 22px 40px 22px 40px;
+  height: 52px;
+  background-color: var(--background-grey-dark-1);
+}
+
+#logo {
+  border: none;
+  padding: 0;
+  background-color: transparent;
+  font-size: 40px;
+  font-family: var(--font-ibm-mono-semi-bold), 'Courier New', Courier, monospace;
+  color: var(--text-grey-light-1);
+}
+
+#logo:hover {
+  cursor: pointer;
+}
+
+body {
+  margin: 0;
+}
