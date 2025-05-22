@@ -63,6 +63,6 @@ const positionRepository = {
 
         positions = positions.filter(p => p.id !== id);
     }
-}
+};
 
 export default positionRepository;

@@ -20,6 +20,6 @@ const positionService = {
     delete(id) {
         positionRepository.delete(id);
     }
-}
+};
 
 export default positionService;
