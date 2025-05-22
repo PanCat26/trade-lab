@@ -1,5 +1,5 @@
-class Position {
-    constructor({id = null, ticker, type, size, weight, entryPrice, exitPrice, stopLoss}){
+export default class Position {
+    constructor({id = null, ticker, type, size, weight = null, entryPrice, exitPrice, stopLoss = null}){
         this.id = id;
         this.ticker = ticker;
         this.type = type;
