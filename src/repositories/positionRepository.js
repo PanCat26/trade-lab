@@ -1,4 +1,3 @@
-import Position from '@/models/Position.js';
 import initialPositions from '@/data/seed/initialPositions';
 
 let positions = initialPositions;
