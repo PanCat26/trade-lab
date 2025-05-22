@@ -1,4 +1,4 @@
-import positionRepository from "@/repositories/positionRepository";
+import positionRepository from "@/repositories/position-repository";
 
 const positionService = {
     getAll(options = {}) {

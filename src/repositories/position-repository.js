@@ -1,4 +1,4 @@
-import initialPositions from '@/data/seed/initialPositions';
+import initialPositions from '@/data/seed/initial-positions';
 
 let positions = initialPositions;
 
@@ -31,6 +31,7 @@ const positionRepository = {
 
         return {
             data: results,
+            totalPositions: totalPositions,
             totalPages: totalPages
         };
     },
@@ -50,6 +51,7 @@ const positionRepository = {
         const existingPosition = positions.find(position => position.id === newPosition.id);
         if (!existingPosition) throw new Error(`Position with ID ${newPosition.id} not found`);
         
+        Object.keys(existingPosition).forEach(key => delete existingPosition[key]);
         Object.assign(existingPosition, newPosition);
     },
 
