@@ -7,19 +7,25 @@ const ibmMonoSemiBold = IBM_Plex_Mono({
   variable: '--font-ibm-mono-semi-bold',
 });
 
+const ibmMonoRegular = IBM_Plex_Mono({
+  weight: ['400'],
+  subsets: ['latin'],
+  variable: '--font-ibm-mono-regular',
+});
+
 export const metadata = {};
 
 export default function RootLayout({ children }) {
   return (
     <html lang="en">
-      <body className={ibmMonoSemiBold.variable}>
+      <body className={`${ibmMonoSemiBold.variable} ${ibmMonoRegular.variable}`}>
         <header>
-          <button id="logo">TradeLab</button>
+          <button className="logo">TradeLab</button>
         </header>
         <main>
-          <nav id="sidebar">
+          <nav className="sidebar">
             <button>
-              <svg xmlns="http://www.w3.org/2000/svg" height="68px" viewBox="0 0 24 24" width="68px" fill="#e6e6e6"><path d="M0 0h24v24H0z" fill="none"/><path d="M10 20v-6h4v6h5v-8h3L12 3 2 12h3v8z"/></svg>
+              <svg xmlns="http://www.w3.org/2000/svg" height="56px" viewBox="0 0 24 24" width="68px" fill="#e6e6e6"><path d="M0 0h24v24H0z" fill="none"/><path d="M10 20v-6h4v6h5v-8h3L12 3 2 12h3v8z"/></svg>
             </button>
           </nav>
           {children}

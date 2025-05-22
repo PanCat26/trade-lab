@@ -1,0 +1,17 @@
+.positions-container {
+    display: flex;
+    flex-direction: column;
+    box-sizing: border-box;
+    width: 296px;
+    height: 100%;
+    background-color: var(--background-grey-light-1);
+}
+
+.scrollable-container {
+    flex: 1;
+    overflow-y: auto;
+}
+
+.button-container {
+    height: 216px;
+}

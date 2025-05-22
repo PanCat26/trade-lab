@@ -1,6 +1,7 @@
 :root {
   --background-grey-dark-1: #28282B;
   --background-grey-dark-2: #3A3A3E;
+  --background-grey-light-1: #CECECE;
   --text-grey-light-1: #E6E6E6;
 }
 
@@ -13,7 +14,7 @@ header {
   background-color: var(--background-grey-dark-1);
 }
 
-#logo {
+.logo {
   border: none;
   padding: 0;
   background-color: transparent;
@@ -22,7 +23,7 @@ header {
   color: var(--text-grey-light-1);
 }
 
-#logo:hover {
+.logo:hover {
   cursor: pointer;
 }
 
@@ -36,7 +37,7 @@ main {
   height: calc(100vh - 96px);
 }
 
-#sidebar  {
+.sidebar  {
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -47,7 +48,7 @@ main {
   background-color: var(--background-grey-dark-2);
 }
 
-#sidebar > button {
+.sidebar > button {
   border: none;
   padding: 0;
   background-color: transparent;

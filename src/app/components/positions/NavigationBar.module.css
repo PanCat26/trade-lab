@@ -1,0 +1,21 @@
+.navigation-bar {
+    display: flex;
+    align-items: center;
+}
+
+.navigation-button {
+    flex: 1;
+    border: none;
+    padding: 4px 0 4px 0;
+    background-color: transparent;
+    text-align: center;
+    font-size: 24px;
+    font-family: var(--font-ibm-mono-regular), 'Courier New', Courier, monospace;
+    text-decoration: none;
+    color: rgba(0, 0, 0, 0.5);
+}
+
+.active {
+    color: black;
+    border-bottom: 2px solid black;
+}
