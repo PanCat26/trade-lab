@@ -2,12 +2,12 @@ import initialPositions from '@/data/seed/initial-positions';
 
 let positions = initialPositions;
 
-export function setPositions(newPositions) {
+export async function setPositions(newPositions) {
     positions = [...newPositions];
 } 
 
 const positionRepository = {
-    getAll({page = 1, limit = 5, sortBy, order = 'asc', filters = {}} = {}) {
+    async getAll({page = 1, limit = 5, sortBy, order = 'asc', filters = {}} = {}) {
         let results = [...positions];
 
         results = results.filter(position =>
@@ -36,18 +36,18 @@ const positionRepository = {
         };
     },
 
-    getById(id) {
+    async getById(id) {
         return positions.find(position => position.id === id) || null;
     },
 
-    add(position) {
+    async add(position) {
         const maxId = positions.reduce((maxId, pos) => Math.max(maxId, pos.id), 1);
         const newPosition = {id: maxId + 1, ...position};
         positions.push(newPosition);
         return { ...newPosition };
     },
 
-    update(newPosition) {
+    async update(newPosition) {
         const existingPosition = positions.find(position => position.id === newPosition.id);
         if (!existingPosition) throw new Error(`Position with ID ${newPosition.id} not found`);
         
@@ -55,7 +55,7 @@ const positionRepository = {
         Object.assign(existingPosition, newPosition);
     },
 
-    delete(id) {
+    async delete(id) {
         const exists = positions.some(position => position.id === id);
         if (!exists) {
             throw new Error(`Position with ID ${id} not found`);

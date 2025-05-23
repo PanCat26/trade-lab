@@ -12,5 +12,5 @@ export default function NavigationBar() {
             <Link href='/positions/home' className={`${styles['navigation-button']} ${pathname === '/positions/home' ? styles['active'] : ''}`}>Home</Link>
             <Link href='/positions/advanced' className={`${styles['navigation-button']} ${pathname === '/positions/advanced' ? styles['active'] : ''}`}>Advanced</Link>
         </nav>
-    )
+    );
 }

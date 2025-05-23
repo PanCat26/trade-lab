@@ -54,6 +54,6 @@ main {
   background-color: transparent;
 }
 
-#sidebar > button:hover {
+.sidebar > button:hover {
   cursor: pointer;
 }

@@ -1,23 +1,23 @@
 import positionService from "@/services/position-service.js";
 
 const positionProxy = {
-    getAll(options = {}) {
+    async getAll(options = {}) {
         return positionService.getAll(options);
     },
 
-    getById(id) {
+    async getById(id) {
         return positionService.getById(id);
     },
 
-    add(position) {
+    async add(position) {
         return positionService.add(position);
     },
 
-    update(newPosition) {
+    async update(newPosition) {
         positionService.update(newPosition);
     },
 
-    delete(id) {
+    async delete(id) {
         positionService.delete(id);
     }
 };

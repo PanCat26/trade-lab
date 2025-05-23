@@ -1,23 +1,23 @@
 import positionRepository from "@/repositories/position-repository";
 
 const positionService = {
-    getAll(options = {}) {
+    async getAll(options = {}) {
         return positionRepository.getAll(options);
     },
 
-    getById(id) {
+    async getById(id) {
         return positionRepository.getById(id);
     },
 
-    add(position) {
+    async add(position) {
         return positionRepository.add(position);
     },
 
-    update(newPosition) {
+    async update(newPosition) {
         positionRepository.update(newPosition);
     },
 
-    delete(id) {
+    async delete(id) {
         positionRepository.delete(id);
     }
 };
