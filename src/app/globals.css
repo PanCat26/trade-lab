@@ -3,6 +3,7 @@
   --background-grey-dark-2: #3A3A3E;
   --background-grey-light-1: #CECECE;
   --text-grey-light-1: #E6E6E6;
+  --delete-red: #B00020;
 }
 
 * {
@@ -23,7 +24,8 @@ header {
   padding: 0;
   background-color: transparent;
   font-size: 40px;
-  font-family: var(--font-ibm-mono-semi-bold), 'Courier New', Courier, monospace;
+  font-family: var(--font-ibm-mono), 'Courier New', Courier, monospace;
+  font-weight: 600;
   color: var(--text-grey-light-1);
 }
 

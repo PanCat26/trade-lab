@@ -10,7 +10,8 @@
     background-color: transparent;
     text-align: center;
     font-size: 24px;
-    font-family: var(--font-ibm-mono-regular), 'Courier New', Courier, monospace;
+    font-family: var(--font-ibm-mono), 'Courier New', Courier, monospace;
+    font-weight: 400;
     text-decoration: none;
     color: rgba(0, 0, 0, 0.5);
 }

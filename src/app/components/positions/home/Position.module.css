@@ -1,14 +1,54 @@
 .position {
     display: flex;
     flex-direction: column;
-    padding: 0 16px 0 16px;
+    padding: 4px 16px 4px 16px;
 }
 
 .titleRow {
     display: flex;
     justify-content: space-between;
     align-items: center;
+    border: none;
 }
 
+.titleText {
+    display: flex;
+    flex-direction: column;
+    flex: 1;
+    min-width: 0;
+}
 
+.titleText:hover {
+    cursor: pointer;
+}
 
+.ticker {
+    color: rgba(0, 0, 0, 0.5);
+    font-size: 10px;
+    font-family: var(--font-ibm-mono), 'Courier New', Courier, monospace;
+    font-weight: 400;
+}
+
+.security {
+    font-size: 16px;
+    font-family: var(--font-ibm-mono), 'Courier New', Courier, monospace;
+    font-weight: 400;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+.deleteButton {
+    margin: 0;
+    border: none;
+    padding: 0;
+    background-color: transparent;
+}
+
+.deleteButton > svg {
+    display: block;
+}
+
+.deleteButton:hover {
+    cursor: pointer;
+}
