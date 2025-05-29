@@ -12,3 +12,66 @@
     font-weight: 400;
 	box-shadow: 0 2px 8px rgba(0,0,0,0.15);
 }
+
+.positionsHeader {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 8px 16px 8px 16px;
+}
+
+.positionsHeader  h1 {
+    font-size: 20px;
+    font-family: var(--font-ibm-mono), Courier New, Courier, monospace;
+    font-weight: 600;
+    margin: 0;
+}
+
+.sortFilterRow {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0 16px 0 16px;
+}
+
+.sortContainer {
+    display: flex;
+    align-items: center;
+    gap: 2px;
+}
+
+.sortLabel {
+    font-size: 12px;
+    font-family: var(--font-ibm-mono), Courier New, Courier, monospace;
+    font-weight: 400;
+}
+
+.sortSelect {
+    padding: 0;
+    border: 1px solid;
+    background: none;
+    font-size: 12px;
+    font-family: var(--font-ibm-mono), Courier New, Courier, monospace;
+    font-weight: 400;
+}
+
+.sortSelect:focus {
+	outline: none;
+}
+
+.sortButton {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border: none;
+    background: none;
+    padding: 0;
+}
+
+.sortButton:hover {
+    cursor: pointer;
+}
+
+.sortButton > svg {
+    display: block;
+}
