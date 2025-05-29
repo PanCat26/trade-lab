@@ -9,6 +9,11 @@
 .scrollableContainer {
     flex: 1;
     overflow-y: auto;
+    scrollbar-width: none;
+}
+
+.scrollableContainer::-webkit-scrollbar {
+    display: none;
 }
 
 .buttonContainer {
