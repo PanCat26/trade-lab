@@ -1,6 +1,6 @@
 'use client';
 
-import { useState, useEffect, useCallback } from 'react';
+import { useState, useEffect, useCallback, useRef } from 'react';
 import InfiniteScroll from 'react-infinite-scroll-component';
 import Position from '@/app/components/positions/home/Position';
 import positionProxy from '@/proxies/position-proxy';
@@ -9,20 +9,14 @@ import styles from './page.module.css';
 const PAGE_SIZE = 20;
 
 export default function Page() {
+	const pageRef = useRef(1);
 	const [positions, setPositions] = useState([]);
-	const [page, setPage] = useState(1);
 	const [hasMore, setHasMore] = useState(true);
 	const [toast, setToast] = useState('');
 	const [sortBy, setSortBy] = useState('id');
 	const [sortOrder, setSortOrder] = useState('asc');
 	const [typeFilter, setTypeFilter] = useState('all');
 	const [hasStopLossFilter, setHasStopLossFilter] = useState(false);
-
-	const resetSortFilterState = () => {
-		setPositions([]);
-		setPage(1);
-		setHasMore(true);
-	};
 
 	const loadNextPage = useCallback(async () => {
 		if (!hasMore) return;
@@ -31,50 +25,56 @@ export default function Page() {
 		if (typeFilter !== 'all') filters.type = typeFilter;
 		if (hasStopLossFilter) filters.stopLoss = true;
 
-    console.log('on client', filters);
+		console.log('on client', filters);
 
-		const res = await positionProxy.getAll({ page, limit: PAGE_SIZE, sortBy, order: sortOrder, filters });
+		const res = await positionProxy.getAll({ page: pageRef.current, limit: PAGE_SIZE, sortBy, order: sortOrder, filters });
 
 		if (res?.data?.length) {
-			setPositions((prev) => [...prev, ...res.data]);
-			setPage((prev) => prev + 1);
-
+			setPositions(prev => [...prev, ...res.data]);
+			pageRef.current += 1;
 			if (res.data.length < PAGE_SIZE) setHasMore(false);
+			else setHasMore(true);
 		} else {
 			setHasMore(false);
 		}
-	}, [page, hasMore, sortBy, sortOrder, typeFilter, hasStopLossFilter]);
+	}, [hasMore, sortBy, sortOrder, typeFilter, hasStopLossFilter]);
 
 	useEffect(() => {
+		setPositions([]);
+		setHasMore(true);
+		pageRef.current = 1;
 		loadNextPage();
-	}, [page, sortBy, sortOrder]);
+		// eslint-disable-next-line react-hooks/exhaustive-deps
+	}, [sortBy, sortOrder, typeFilter, hasStopLossFilter]);
 
 	const handleFieldChange = async (field, value, position) => {
 		const updatedPosition = { ...position, [field]: value };
 		try {
 			await positionProxy.update(updatedPosition);
 			const isFilteredOutByType =
-			field === 'type' && typeFilter !== 'all' && value !== typeFilter;
+				field === 'type' && typeFilter !== 'all' && value !== typeFilter;
+			const hadStopLossBefore =
+				position.stopLoss !== undefined && position.stopLoss !== null;
+			const hasStopLossNow = field === 'stopLoss' ? value !== null && value !== undefined : hadStopLossBefore;
+			const isFilteredOutByStopLoss =
+				hasStopLossFilter && !hasStopLossNow;
 
-      const hadStopLossBefore =
-        position.stopLoss !== undefined && position.stopLoss !== null;
-      const hasStopLossNow = field === 'stopLoss' ? value !== null && value !== undefined : hadStopLossBefore;
-      const isFilteredOutByStopLoss =
-        hasStopLossFilter && !hasStopLossNow;
-
-      if (isFilteredOutByType || isFilteredOutByStopLoss) {
-        resetSortFilterState();
-      } else {
-        setPositions((previousPositions) =>
-          previousPositions.map((p) => (p.id === position.id ? updatedPosition : p))
-        );
-      }
+			if (isFilteredOutByType || isFilteredOutByStopLoss) {
+				setPositions([]);
+				setHasMore(true);
+				pageRef.current = 1;
+				loadNextPage();
+			} else {
+				setPositions((previousPositions) =>
+					previousPositions.map((p) => (p.id === position.id ? updatedPosition : p))
+				);
+			}
 			setToast('Update successful!');
 			setTimeout(() => setToast(''), 2000);
 		} catch (err) {
 			console.error('Failed to update position:', err);
-      setToast('Update failed. Please try again.');
-      setTimeout(() => setToast(''), 2000);
+			setToast('Update failed. Please try again.');
+			setTimeout(() => setToast(''), 2000);
 		}
 	};
   
@@ -93,12 +93,10 @@ export default function Page() {
 
 	const handleSortChange = (value) => {
 		setSortBy(value);
-		resetSortFilterState();
 	};
 
 	const handleSortOrderToggle = () => {
-		setSortOrder((prev) => (prev === 'asc' ? 'desc' : 'asc'));
-		resetSortFilterState();
+		setSortOrder(prev => (prev === 'asc' ? 'desc' : 'asc'));
 	};
 
 	const handleFilterChange = (filterType, value) => {
@@ -107,7 +105,6 @@ export default function Page() {
 		} else if (filterType === 'stopLoss') {
 			setHasStopLossFilter(value);
 		}
-		resetSortFilterState();
 	};
 
 	return (
