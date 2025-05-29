@@ -1,7 +1,7 @@
 .position {
     display: flex;
     flex-direction: column;
-    padding: 4px 16px 4px 16px;
+    padding: 8px 16px 8px 16px;
 }
 
 .titleRow {
@@ -24,7 +24,7 @@
 
 .ticker {
     color: rgba(0, 0, 0, 0.5);
-    font-size: 10px;
+    font-size: 11px;
     font-family: var(--font-ibm-mono), 'Courier New', Courier, monospace;
     font-weight: 400;
 }
@@ -32,7 +32,7 @@
 .security {
     font-size: 16px;
     font-family: var(--font-ibm-mono), 'Courier New', Courier, monospace;
-    font-weight: 400;
+    font-weight: 600;
     white-space: nowrap;
     overflow: hidden;
     text-overflow: ellipsis;
@@ -51,4 +51,45 @@
 
 .deleteButton:hover {
     cursor: pointer;
+}
+
+.data {
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+    padding: 8px 0 0 0;
+}
+
+.detailsHeader {
+    font-size: 16px;
+    font-family: var(--font-ibm-mono), 'Courier New', Courier, monospace;
+    font-weight: 400;
+}
+
+.detailsRow {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    font-size: 14px;
+    font-family: var(--font-ibm-mono), 'Courier New', Courier, monospace;
+    font-weight: 400;
+}
+
+.input {
+    width: 80px;
+    border: 2px solid rgba(0, 0, 0, 0.25);
+    background: none;
+    text-align: center;
+    font-size: 14px;
+    font-family: var(--font-ibm-mono), 'Courier New', Courier, monospace;
+    font-weight: 400;
+}
+
+.input:focus {
+  outline: none;
+  border: 2px solid black;
+}
+
+.input option {
+  text-align: center;
 }
