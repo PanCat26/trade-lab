@@ -48,8 +48,17 @@ export default function Page() {
       setTimeout(() => setToast(''), 2000);
 		}
 	};
-	const handleDelete = async () => {
-		//
+	const handleDelete = async (position) => {
+		try {
+			await positionProxy.delete(position.id);
+			setPositions(previousPositions => previousPositions.filter(p => p.id !== position.id));
+			setToast('Position deleted!');
+			setTimeout(() => setToast(''), 2000);
+		} catch (err) {
+			console.error('Failed to delete position:', err);
+			setToast('Delete failed. Please try again.');
+			setTimeout(() => setToast(''), 2000);
+		}
 	};
 
 	return (
