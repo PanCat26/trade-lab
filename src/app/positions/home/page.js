@@ -15,8 +15,10 @@ export default function Page() {
 	const [toast, setToast] = useState('');
 	const [sortBy, setSortBy] = useState('id');
 	const [sortOrder, setSortOrder] = useState('asc');
+	const [typeFilter, setTypeFilter] = useState('all');
+	const [hasStopLossFilter, setHasStopLossFilter] = useState(false);
 
-	const resetSortState = () => {
+	const resetSortFilterState = () => {
 		setPositions([]);
 		setPage(1);
 		setHasMore(true);
@@ -25,7 +27,13 @@ export default function Page() {
 	const loadNextPage = useCallback(async () => {
 		if (!hasMore) return;
 
-		const res = await positionProxy.getAll({ page, limit: PAGE_SIZE, sortBy, order: sortOrder });
+		const filters = {};
+		if (typeFilter !== 'all') filters.type = typeFilter;
+		if (hasStopLossFilter) filters.stopLoss = true;
+
+    console.log('on client', filters);
+
+		const res = await positionProxy.getAll({ page, limit: PAGE_SIZE, sortBy, order: sortOrder, filters });
 
 		if (res?.data?.length) {
 			setPositions((prev) => [...prev, ...res.data]);
@@ -35,7 +43,7 @@ export default function Page() {
 		} else {
 			setHasMore(false);
 		}
-	}, [page, hasMore, sortBy, sortOrder]);
+	}, [page, hasMore, sortBy, sortOrder, typeFilter, hasStopLossFilter]);
 
 	useEffect(() => {
 		loadNextPage();
@@ -45,9 +53,22 @@ export default function Page() {
 		const updatedPosition = { ...position, [field]: value };
 		try {
 			await positionProxy.update(updatedPosition);
-			setPositions((previousPositions) =>
-				previousPositions.map((p) => (p.id === position.id ? updatedPosition : p))
-			);
+			const isFilteredOutByType =
+			field === 'type' && typeFilter !== 'all' && value !== typeFilter;
+
+      const hadStopLossBefore =
+        position.stopLoss !== undefined && position.stopLoss !== null;
+      const hasStopLossNow = field === 'stopLoss' ? value !== null && value !== undefined : hadStopLossBefore;
+      const isFilteredOutByStopLoss =
+        hasStopLossFilter && !hasStopLossNow;
+
+      if (isFilteredOutByType || isFilteredOutByStopLoss) {
+        resetSortFilterState();
+      } else {
+        setPositions((previousPositions) =>
+          previousPositions.map((p) => (p.id === position.id ? updatedPosition : p))
+        );
+      }
 			setToast('Update successful!');
 			setTimeout(() => setToast(''), 2000);
 		} catch (err) {
@@ -60,7 +81,7 @@ export default function Page() {
 	const handleDelete = async (position) => {
 		try {
 			await positionProxy.delete(position.id);
-			setPositions(previousPositions => previousPositions.filter(p => p.id !== position.id));
+			setPositions((prev) => prev.filter((pos) => pos.id !== position.id));
 			setToast('Position deleted!');
 			setTimeout(() => setToast(''), 2000);
 		} catch (err) {
@@ -72,12 +93,21 @@ export default function Page() {
 
 	const handleSortChange = (value) => {
 		setSortBy(value);
-		resetSortState();
+		resetSortFilterState();
 	};
 
 	const handleSortOrderToggle = () => {
 		setSortOrder((prev) => (prev === 'asc' ? 'desc' : 'asc'));
-		resetSortState();
+		resetSortFilterState();
+	};
+
+	const handleFilterChange = (filterType, value) => {
+		if (filterType === 'type') {
+			setTypeFilter(value);
+		} else if (filterType === 'stopLoss') {
+			setHasStopLossFilter(value);
+		}
+		resetSortFilterState();
 	};
 
 	return (
@@ -90,9 +120,9 @@ export default function Page() {
       <div className={styles.positionsHeader}>
         <h1>Positions</h1>
       </div>
-      <div className={styles.sortFilterRow}>
-        <div className={styles.sortContainer}>
-          <span className={styles.sortLabel}>Sort by:</span>
+      <div className={styles.sortFilterMenu}>
+        <div className={styles.sortFilterToolbar}>
+          <span className={styles.sortFilterOptionLabel}>Sort by:</span>
           {sortBy !== 'id' && (
             <button
               onClick={handleSortOrderToggle}
@@ -113,6 +143,44 @@ export default function Page() {
             <option value="id">Default</option>
             <option value="size">Position size</option>
           </select>
+        </div>
+        <div className={styles.sortFilterToolbar}>
+          <span className={styles.sortFilterOptionLabel}>Type:</span>
+          <input
+            type="radio"
+            id="type-all"
+            name="typeFilter"
+            value="all"
+            checked={typeFilter === 'all'}
+            onChange={() => handleFilterChange('type', 'all')}
+          />
+          <label className={styles.radioLabel} htmlFor="type-all">All</label>
+          <input
+            type="radio"
+            id="type-long"
+            name="typeFilter"
+            value="long"
+            checked={typeFilter === 'long'}
+            onChange={() => handleFilterChange('type', 'long')}
+          />
+          <label className={styles.radioLabel} htmlFor="type-long">Long</label>
+          <input
+            type="radio"
+            id="type-short"
+            name="typeFilter"
+            value="short"
+            checked={typeFilter === 'short'}
+            onChange={() => handleFilterChange('type', 'short')}
+          />
+          <label className={styles.radioLabel} htmlFor="type-short">Short</label>
+        </div>
+        <div className={styles.sortFilterToolbar}>
+          <span className={styles.sortFilterOptionLabel}>Stop loss:</span>
+          <input
+            type="checkbox"
+            checked={hasStopLossFilter}
+            onChange={e => handleFilterChange('stopLoss', e.target.checked)}
+          />
         </div>
       </div>
 			<InfiniteScroll

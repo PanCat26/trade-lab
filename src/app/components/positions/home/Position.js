@@ -43,19 +43,19 @@ export default function Position({ position, onFieldChange, onDelete }) {
                     </div>
                     <div className={styles.detailsRow}>
                         <span>Position size</span>
-                        <input className={styles.input} type="number" value={position.size} onChange={e => handleChange('size', e.target.value)} />
+                        <input className={styles.input} type="number" value={position.size} onChange={e => handleChange('size', e.target.value === '' ? null : Number(e.target.value))} />
                     </div>
                     <div className={styles.detailsRow}>
                         <span>Entry price</span>
-                        <input className={styles.input} type="number" value={position.entryPrice} onChange={e => handleChange('entryPrice', e.target.value)} />
+                        <input className={styles.input} type="number" value={position.entryPrice} onChange={e => handleChange('entryPrice', e.target.value === '' ? null : Number(e.target.value))} />
                     </div>
                     <div className={styles.detailsRow}>
                         <span>Exit price</span>
-                        <input className={styles.input} type="number" value={position.exitPrice} onChange={e => handleChange('exitPrice', e.target.value)} />
+                        <input className={styles.input} type="number" value={position.exitPrice} onChange={e => handleChange('exitPrice', e.target.value === '' ? null : Number(e.target.value))} />
                     </div>
                     <div className={styles.detailsRow}>
                         <span>Stop loss</span>
-                        <input className={styles.input} type="number" value={position.stopLoss} onChange={e => handleChange('stopLoss', e.target.value)} />
+                        <input className={styles.input} type="number" value={position.stopLoss} onChange={e => handleChange('stopLoss', e.target.value === '' ? null : Number(e.target.value))} />
                     </div>
                 </div>
             )}

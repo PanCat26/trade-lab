@@ -27,20 +27,21 @@
     margin: 0;
 }
 
-.sortFilterRow {
+.sortFilterMenu {
     display: flex;
-    justify-content: space-between;
-    align-items: center;
+    flex-direction: column;
+    justify-content: center;
+    gap: 4px;
     padding: 0 16px 0 16px;
 }
 
-.sortContainer {
+.sortFilterToolbar {
     display: flex;
     align-items: center;
     gap: 2px;
 }
 
-.sortLabel {
+.sortFilterOptionLabel {
     font-size: 12px;
     font-family: var(--font-ibm-mono), Courier New, Courier, monospace;
     font-weight: 400;
@@ -74,4 +75,10 @@
 
 .sortButton > svg {
     display: block;
+}
+
+.radioLabel {
+    font-size: 12px;
+    font-family: var(--font-ibm-mono), Courier New, Courier, monospace;
+    font-weight: 400;
 }

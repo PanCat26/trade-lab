@@ -10,9 +10,16 @@ const positionRepository = {
     async getAll({page = 1, limit = 5, sortBy, order = 'asc', filters = {}} = {}) {
         let results = [...positions];
 
-        results = results.filter(position =>
-            Object.entries(filters).every(([key, value]) => position[key] === value)
-        );
+        if (filters.type) {
+            results = results.filter(position => position.type === filters.type);
+        }
+
+        //print filter to console in server
+        console.log('Applying filters:', filters);
+
+        if (filters.stopLoss) {
+            results = results.filter(position => position.stopLoss != undefined && position.stopLoss !== null);
+        }
 
         if (sortBy) {
             results.sort((firstPosition, secondPosition) => {
