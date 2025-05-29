@@ -1,0 +1,14 @@
+.toast {
+	position: fixed;
+	top: 110px;
+	left: 50%;
+	transform: translateX(-50%);
+	padding: 8px 16px;
+	z-index: 1000;
+	background: var(--background-grey-dark-2);
+	color: var(--text-grey-light-1);
+	font-size: 16px;
+	font-family: var(--font-ibm-mono), Courier New, Courier, monospace;
+    font-weight: 400;
+	box-shadow: 0 2px 8px rgba(0,0,0,0.15);
+}
