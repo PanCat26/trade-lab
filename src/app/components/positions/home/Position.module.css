@@ -1,0 +1,14 @@
+.position {
+    display: flex;
+    flex-direction: column;
+    padding: 0 16px 0 16px;
+}
+
+.titleRow {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+
+

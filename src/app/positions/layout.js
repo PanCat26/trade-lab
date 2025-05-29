@@ -3,12 +3,12 @@ import NavigationBar from '../components/positions/NavigationBar';
 
 export default function PositionsLayout({ children }) {
     return (
-        <div className={styles['positions-container']}>
+        <div className={styles.positionsContainer}>
             <NavigationBar />
-                <div className={styles['scrollable-container']}>
-                    {children}
-                </div>
-            <div className={styles['button-container']}></div>
+            <div className={styles.scrollableContainer}>
+                {children}
+            </div>
+            <div className={styles.buttonContainer}></div>
         </div>
     );
 }

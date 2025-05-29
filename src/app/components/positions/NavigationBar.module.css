@@ -1,9 +1,9 @@
-.navigation-bar {
+.navigationBar {
     display: flex;
     align-items: center;
 }
 
-.navigation-button {
+.navigationButton {
     flex: 1;
     border: none;
     padding: 4px 0 4px 0;
@@ -15,7 +15,7 @@
     color: rgba(0, 0, 0, 0.5);
 }
 
-.active {
-    color: black;
+.activeNavigationButton {
     border-bottom: 2px solid black;
+    color: black;
 }

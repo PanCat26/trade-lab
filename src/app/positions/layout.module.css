@@ -1,17 +1,16 @@
-.positions-container {
+.positionsContainer {
     display: flex;
     flex-direction: column;
-    box-sizing: border-box;
-    width: 296px;
     height: 100%;
+    width: 296px;
     background-color: var(--background-grey-light-1);
 }
 
-.scrollable-container {
+.scrollableContainer {
     flex: 1;
     overflow-y: auto;
 }
 
-.button-container {
+.buttonContainer {
     height: 216px;
 }
