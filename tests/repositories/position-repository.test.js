@@ -1,5 +1,5 @@
 import positionRepository,  { setPositions } from '@/repositories/position-repository.js';
-import testPositions from '@/data/seed/test-positions.js';
+import { testPositions, testPositionsForRisk }  from '@/data/seed/test-positions.js';
 
 describe('Position Repository', () => {
 
@@ -65,6 +65,70 @@ describe('Position Repository', () => {
         });
     });
 
+    test('getAll with type filter and ascending id sorting criteria should return only positions of the specified type sorted ascendingly by id', async () => {
+        const result = await positionRepository.getAll({ filters: { type: 'long' }, sortBy: 'id', order: 'asc', limit: 100 });
+        for (let i = 0; i < result.data.length - 1; i++) {
+            expect(result.data[i].id).toBeLessThanOrEqual(result.data[i + 1].id);
+        }
+        expect(result.data.length).toBe(18);
+        result.data.forEach(position => {
+            expect(position.type).toBe('long');
+        });
+    });
+
+    test('getAll with stop loss filter should return only positions with stop loss defined', async () => {
+        const result = await positionRepository.getAll({ filters: { stopLoss: true }, limit: 100 });
+        expect(result.data.length).toBe(18);
+        result.data.forEach(position => {
+            expect(position.stopLoss).toBeDefined();
+        }); 
+    });
+
+    test('getAll with stop loss filter and descending size sorting criteria should return only positions with stop loss defined sorted desscendingly by size', async () => {
+        const result = await positionRepository.getAll({ filters: { stopLoss: true }, sortBy: 'size', order: 'desc', limit: 100 });
+        for (let i = 0; i < result.data.length - 1; i++) {
+            expect(result.data[i].size).toBeGreaterThanOrEqual(result.data[i + 1].size);
+        }
+        expect(result.data.length).toBe(18);
+        result.data.forEach(position => {
+            expect(position.stopLoss).toBeDefined();
+        });
+    });
+
+    test('getAll with stop loss filter and ascending id sorting criteria should return only positions with stop loss defined sorted ascendingly by id', async () => {
+        const result = await positionRepository.getAll({ filters: { stopLoss: true }, sortBy: 'id', order: 'asc', limit: 100 });
+        for (let i = 0; i < result.data.length - 1; i++) {
+            expect(result.data[i].id).toBeLessThanOrEqual(result.data[i + 1].id);
+        }
+        expect(result.data.length).toBe(18);
+        result.data.forEach(position => {
+            expect(position.stopLoss).toBeDefined();
+        });
+    });
+
+    //risk tests
+
+    test('getAll should return high risk for positions with undefined stop losses', async () => {
+        const result = await positionRepository.getAll({ limit: 100 });
+        expect(result.data.length).toBe(30);
+        result.data.forEach(position => {
+            if (position.stopLoss === undefined) {
+                expect(position.risk).toBe('high');
+            }
+        });
+    });
+
+    test('getAll should compute risks correctly', async () => {
+        await setPositions([...testPositionsForRisk]);
+        const result = await positionRepository.getAll({ limit: 5 });
+        expect(result.data.length).toBe(5);
+        expect(result.data[0].risk).toBe('low');
+        expect(result.data[1].risk).toBe('medium');
+        expect(result.data[2].risk).toBe('medium');
+        expect(result.data[3].risk).toBe('high');
+        expect(result.data[4].risk).toBe('low');
+    });
+
     test('getById should return the correct position', async () => {
         const result = await positionRepository.getById(6);
         expect(result).toEqual(testPositions[5]);
@@ -103,5 +167,16 @@ describe('Position Repository', () => {
     
     test('delete should throw an error for non-existing ID', async () => {
         await expect(positionRepository.delete(999)).rejects.toThrow(`Position with ID 999 not found`);
+    });
+
+    test('getRisksByIds should return risks for specified IDs', async () => {
+        await setPositions([...testPositionsForRisk]);
+        const risks = await positionRepository.getRisksByIds([1, 2, 3, 4, 5]);
+        expect(risks.length).toBe(5);
+        expect(risks[0].risk).toBe('low');
+        expect(risks[1].risk).toBe('medium');
+        expect(risks[2].risk).toBe('medium');
+        expect(risks[3].risk).toBe('high');
+        expect(risks[4].risk).toBe('low');
     });
 });

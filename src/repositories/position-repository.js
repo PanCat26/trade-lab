@@ -18,7 +18,7 @@ const positionRepository = {
         console.log('Applying filters:', filters);
 
         if (filters.stopLoss) {
-            results = results.filter(position => position.stopLoss != undefined && position.stopLoss !== null);
+            results = results.filter(position => position.stopLoss != undefined);
         }
 
         if (sortBy) {
@@ -39,7 +39,7 @@ const positionRepository = {
         const sortedRisks = [...allRisks].sort((a, b) => a - b);
         const n = sortedRisks.length;
         const lowThreshold = sortedRisks[Math.floor(n / 3)] ?? 0;
-        const medThreshold = sortedRisks[Math.floor((2 * n) / 3)] ?? 0;
+        const medThreshold = sortedRisks[Math.floor((n * 2) / 3)] ?? 0;
 
         results = results.map(position => {
             if (position.stopLoss === null || position.stopLoss === undefined) {

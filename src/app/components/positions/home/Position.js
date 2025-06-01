@@ -64,8 +64,8 @@ export default function Position({ position, onUpdate, onDelete }) {
                     <div className={styles.detailsRow}>
                         <span>Position type</span>
                         <select className={styles.input} value={pendingUpdate.type ?? position.type} onChange={e => handleChange('type', e.target.value)}>
-                            <option value="Long">Long</option>
-                            <option value="Short">Short</option>
+                            <option value="long">Long</option>
+                            <option value="short">Short</option>
                         </select>
                     </div>
                     <div className={styles.detailsRow}>
