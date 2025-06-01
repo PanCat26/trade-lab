@@ -86,10 +86,52 @@
 }
 
 .input:focus {
-  outline: none;
-  border: 2px solid black;
+    outline: none;
+    border: 2px solid black;
 }
 
 .input option {
-  text-align: center;
+    text-align: center;
+}
+
+.riskIndicator {
+    display: inline-block;
+    margin-left: 8px;
+    width: 11px;
+    height: 11px;
+    border-radius: 50%;
+    border: 1px solid;
+    background-color: rgba(0, 0, 0, 0.25);
+}
+
+.riskIndicatorLow {
+    background-color: var(--risk-low);
+}
+.riskIndicatorMedium {
+    background-color: var(--risk-medium);
+}
+.riskIndicatorHigh {
+    background-color: var(--risk-high);
+}
+
+.updateButtonRow {
+    margin-top: 8px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.updateButton {
+    border: none;
+    padding: 6px 12px;
+    background: #000;
+    color: var(--text-grey-light-1);
+    font-size: 16px;
+    font-family: var(--font-ibm-mono), 'Courier New', Courier, monospace;
+    font-weight: 400;
+}
+
+.updateButton:hover {
+    cursor: pointer;
+    background: #222;
 }

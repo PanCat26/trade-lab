@@ -31,6 +31,27 @@ const positionRepository = {
             });
         }
 
+        const allRisks = positions.map(position =>
+            (position.stopLoss === null || position.stopLoss === undefined)
+                ? Number.POSITIVE_INFINITY
+                : Math.abs(position.entryPrice - position.stopLoss) * position.size
+        );
+        const sortedRisks = [...allRisks].sort((a, b) => a - b);
+        const n = sortedRisks.length;
+        const lowThreshold = sortedRisks[Math.floor(n / 3)] ?? 0;
+        const medThreshold = sortedRisks[Math.floor((2 * n) / 3)] ?? 0;
+
+        results = results.map(position => {
+            if (position.stopLoss === null || position.stopLoss === undefined) {
+                return { ...position, risk: 'high' };
+            }
+            const riskValue = Math.abs(position.entryPrice - position.stopLoss) * position.size;
+            let risk = 'low';
+            if (riskValue > medThreshold) risk = 'high';
+            else if (riskValue > lowThreshold) risk = 'medium';
+            return { ...position, risk };
+        });
+
         const totalPositions = results.length;
         const totalPages = Math.ceil(totalPositions / limit);
         const startIndex = (page - 1) * limit;
@@ -69,6 +90,34 @@ const positionRepository = {
         }
 
         positions = positions.filter(p => p.id !== id);
+    },
+
+    async getRisksByIds(ids) {
+        const idSet = new Set(ids);
+        const filteredPositions = positions.filter(position => idSet.has(position.id));
+
+        const riskValues = positions.map(position =>
+            (position.stopLoss == null || position.stopLoss === undefined)
+                ? Number.POSITIVE_INFINITY
+                : Math.abs(position.entryPrice - position.stopLoss) * position.size
+        );
+
+        const sorted = [...riskValues].sort((a, b) => a - b);
+        const n = sorted.length;
+        const lowThreshold = sorted[Math.floor(n / 3)] ?? 0;
+        const medThreshold = sorted[Math.floor((2 * n) / 3)] ?? 0;
+
+        return filteredPositions.map(position => {
+            const riskValue = (position.stopLoss == null || position.stopLoss === undefined)
+                ? Number.POSITIVE_INFINITY
+                : Math.abs(position.entryPrice - position.stopLoss) * position.size;
+
+            let risk = 'low';
+            if (riskValue > medThreshold) risk = 'high';
+            else if (riskValue > lowThreshold) risk = 'medium';
+
+            return { id: position.id, risk };
+        });
     }
 };
 

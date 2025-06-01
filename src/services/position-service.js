@@ -19,6 +19,10 @@ const positionService = {
 
     async delete(id) {
         positionRepository.delete(id);
+    },
+
+    async getRisksByIds(ids) {
+        return positionRepository.getRisksByIds(ids);
     }
 };
 

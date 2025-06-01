@@ -19,6 +19,10 @@ const positionProxy = {
 
     async delete(id) {
         positionService.delete(id);
+    },
+
+    async getRisksByIds(ids) {
+        return positionService.getRisksByIds(ids);
     }
 };
 

@@ -4,6 +4,9 @@
   --background-grey-light-1: #CECECE;
   --text-grey-light-1: #E6E6E6;
   --delete-red: #B00020;
+  --risk-low: #227265;
+  --risk-medium: #FDD835;
+  --risk-high: #D32F2F;
 }
 
 * {

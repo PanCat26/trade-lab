@@ -10,6 +10,7 @@ const PAGE_SIZE = 20;
 
 export default function Page() {
 	const pageRef = useRef(1);
+	const reloadIdRef = useRef(0);
 	const [positions, setPositions] = useState([]);
 	const [hasMore, setHasMore] = useState(true);
 	const [toast, setToast] = useState('');
@@ -17,6 +18,33 @@ export default function Page() {
 	const [sortOrder, setSortOrder] = useState('asc');
 	const [typeFilter, setTypeFilter] = useState('all');
 	const [hasStopLossFilter, setHasStopLossFilter] = useState(false);
+
+	const recomputeRisks = (positions) => {
+		if (!positions.length) return;
+		const ids = positions.map(position => position.id);
+
+		const pastReloadId = reloadIdRef.current;
+
+		(async () => {
+			try {
+				const risks = await positionProxy.getRisksByIds(ids);
+				if (pastReloadId !== reloadIdRef.current) return;
+
+				const riskMap = {};
+				risks.forEach(({id, risk}) => { riskMap[id] = risk; });
+				setPositions(previousPositions => previousPositions.map(position => {
+					if (riskMap.hasOwnProperty(position.id)) {
+						return { ...position, risk: riskMap[position.id] };
+					}
+					return position;
+				}));
+			} catch (error) {
+				console.error('Failed to fetch risks:', error);
+				setToast('Failed to fetch risks. Please try again.');
+				setTimeout(() => setToast(''), 2000);
+			}
+		})();
+	};
 
 	const loadNextPage = useCallback(async () => {
 		if (!hasMore) return;
@@ -27,16 +55,28 @@ export default function Page() {
 
 		console.log('on client', filters);
 
-		const res = await positionProxy.getAll({ page: pageRef.current, limit: PAGE_SIZE, sortBy, order: sortOrder, filters });
+		try {
+			const newPositions = await positionProxy.getAll({ page: pageRef.current, limit: PAGE_SIZE, sortBy, order: sortOrder, filters });
 
-		if (res?.data?.length) {
-			setPositions(prev => [...prev, ...res.data]);
-			pageRef.current += 1;
-			if (res.data.length < PAGE_SIZE) setHasMore(false);
-			else setHasMore(true);
-		} else {
+			if (pageRef.current === 1) {
+				reloadIdRef.current += 1;
+			}
+
+			if (newPositions.data.length) {
+				setPositions(prev => [...prev, ...newPositions.data]);
+				pageRef.current += 1;
+				if (newPositions.data.length < PAGE_SIZE) setHasMore(false);
+				else setHasMore(true);
+			} else {
+				setHasMore(false);
+			}
+		} catch (error) {
+			console.error('Failed to load positions:', error);
+			setToast('Failed to load positions. Please try again.');
+			setTimeout(() => setToast(''), 2000);
 			setHasMore(false);
 		}
+
 	}, [hasMore, sortBy, sortOrder, typeFilter, hasStopLossFilter]);
 
 	useEffect(() => {
@@ -44,48 +84,52 @@ export default function Page() {
 		setHasMore(true);
 		pageRef.current = 1;
 		loadNextPage();
-		// eslint-disable-next-line react-hooks/exhaustive-deps
 	}, [sortBy, sortOrder, typeFilter, hasStopLossFilter]);
 
-	const handleFieldChange = async (field, value, position) => {
-		const updatedPosition = { ...position, [field]: value };
+	const handleUpdate = async (updatedPosition, originalPosition) => {
 		try {
 			await positionProxy.update(updatedPosition);
+			
+			// Check if update affects filters/sort
 			const isFilteredOutByType =
-				field === 'type' && typeFilter !== 'all' && value !== typeFilter;
-			const hadStopLossBefore =
-				position.stopLoss !== undefined && position.stopLoss !== null;
-			const hasStopLossNow = field === 'stopLoss' ? value !== null && value !== undefined : hadStopLossBefore;
-			const isFilteredOutByStopLoss =
-				hasStopLossFilter && !hasStopLossNow;
+				typeFilter !== 'all' && updatedPosition.type !== typeFilter;
+			const hasStopLossSet = updatedPosition.stopLoss !== undefined;
+			const isFilteredOutByStopLoss = hasStopLossFilter && !hasStopLossSet;
+			const isMovedBySort = sortBy !== 'id' && sortBy in updatedPosition && originalPosition[sortBy] !== updatedPosition[sortBy];
 
-			if (isFilteredOutByType || isFilteredOutByStopLoss) {
+			if (isFilteredOutByType || isFilteredOutByStopLoss || isMovedBySort) {
 				setPositions([]);
 				setHasMore(true);
 				pageRef.current = 1;
 				loadNextPage();
 			} else {
-				setPositions((previousPositions) =>
-					previousPositions.map((p) => (p.id === position.id ? updatedPosition : p))
-				);
+				setPositions((previousPositions) => {
+					const newPositions = previousPositions.map(position => (position.id === updatedPosition.id ? updatedPosition : position));
+					recomputeRisks(newPositions);
+					return newPositions;
+				});
 			}
 			setToast('Update successful!');
 			setTimeout(() => setToast(''), 2000);
-		} catch (err) {
-			console.error('Failed to update position:', err);
+		} catch (error) {
+			console.error('Failed to update position:', error);
 			setToast('Update failed. Please try again.');
 			setTimeout(() => setToast(''), 2000);
 		}
 	};
-  
+
 	const handleDelete = async (position) => {
 		try {
 			await positionProxy.delete(position.id);
-			setPositions((prev) => prev.filter((pos) => pos.id !== position.id));
+			setPositions((previousPositions) => {
+				const newPositions = previousPositions.filter(p => p.id !== position.id);
+				recomputeRisks(newPositions);
+				return newPositions;
+			});
 			setToast('Position deleted!');
 			setTimeout(() => setToast(''), 2000);
-		} catch (err) {
-			console.error('Failed to delete position:', err);
+		} catch (error) {
+			console.error('Failed to delete position:', error);
 			setToast('Delete failed. Please try again.');
 			setTimeout(() => setToast(''), 2000);
 		}
@@ -96,7 +140,7 @@ export default function Page() {
 	};
 
 	const handleSortOrderToggle = () => {
-		setSortOrder(prev => (prev === 'asc' ? 'desc' : 'asc'));
+		setSortOrder(previousSortOrder => (previousSortOrder === 'asc' ? 'desc' : 'asc'));
 	};
 
 	const handleFilterChange = (filterType, value) => {
@@ -192,7 +236,7 @@ export default function Page() {
 					<Position
 						key={pos.id}
 						position={pos}
-						onFieldChange={handleFieldChange}
+						onUpdate={handleUpdate}
 						onDelete={handleDelete}
 					/>
 				))}

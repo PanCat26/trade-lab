@@ -3,15 +3,28 @@
 import { useState } from 'react';
 import styles from './Position.module.css';
 
-export default function Position({ position, onFieldChange, onDelete }) {
+export default function Position({ position, onUpdate, onDelete }) {
     const [showDetails, setShowDetails] = useState(false);
+    const [pendingUpdate, setPendingUpdate] = useState({});
 
-    const handleToggleDetails = () => setShowDetails((prev) => !prev);
+    const handleToggleDetails = () => {
+        setShowDetails(prev => {
+            if (prev) setPendingUpdate({});
+            return !prev;
+        });
+    };
 
     const handleChange = (field, value) => {
-        if (onFieldChange) {
-            onFieldChange(field, value, position);
+        // Allow undefined for all fields except size, type, entryPrice
+        if (["size", "type", "entryPrice"].includes(field) && value === undefined) {
+            return;
         }
+        setPendingUpdate(previousFields => ({ ...previousFields, [field]: value }));
+    };
+
+    const handleUpdate = () => {
+        onUpdate({ ...position, ...pendingUpdate }, position);
+        setPendingUpdate({});
     };
 
     const handleDelete = () => {
@@ -24,7 +37,21 @@ export default function Position({ position, onFieldChange, onDelete }) {
         <div className={styles.position}>
             <div className={styles.titleRow}>
                 <div className={styles.titleText} onClick={handleToggleDetails}>
-                    <span className={styles.ticker}>{position.ticker}</span>
+                    <span className={styles.ticker}>
+                        {position.ticker}
+                        <span
+                            className={`${styles.riskIndicator} ${
+                                position.risk === 'low'
+                                    ? styles.riskIndicatorLow
+                                    : position.risk === 'medium'
+                                    ? styles.riskIndicatorMedium
+                                    : position.risk === 'high'
+                                    ? styles.riskIndicatorHigh
+                                    : ''
+                            }`}
+                            title={ position.risk ? `${position.risk.charAt(0).toUpperCase() + position.risk.slice(1)} risk` : '' }
+                        />
+                    </span>
                     <div className={styles.security} title={position.security}>{position.security}</div>
                 </div>
                 <button className={styles.deleteButton} onClick={handleDelete}>
@@ -36,26 +63,29 @@ export default function Position({ position, onFieldChange, onDelete }) {
                     <div className={styles.detailsHeader}>Details</div>
                     <div className={styles.detailsRow}>
                         <span>Position type</span>
-                        <select className={styles.input} value={position.type} onChange={e => handleChange('type', e.target.value)}>
+                        <select className={styles.input} value={pendingUpdate.type ?? position.type} onChange={e => handleChange('type', e.target.value)}>
                             <option value="Long">Long</option>
                             <option value="Short">Short</option>
                         </select>
                     </div>
                     <div className={styles.detailsRow}>
                         <span>Position size</span>
-                        <input className={styles.input} type="number" value={position.size} onChange={e => handleChange('size', e.target.value === '' ? null : Number(e.target.value))} />
+                        <input className={styles.input} type="number" value={pendingUpdate.size ?? position.size ?? ''} onChange={e => handleChange('size', e.target.value === '' ? undefined : Number(e.target.value))} />
                     </div>
                     <div className={styles.detailsRow}>
                         <span>Entry price</span>
-                        <input className={styles.input} type="number" value={position.entryPrice} onChange={e => handleChange('entryPrice', e.target.value === '' ? null : Number(e.target.value))} />
+                        <input className={styles.input} type="number" value={pendingUpdate.entryPrice ?? position.entryPrice ?? ''} onChange={e => handleChange('entryPrice', e.target.value === '' ? undefined : Number(e.target.value))} />
                     </div>
                     <div className={styles.detailsRow}>
                         <span>Exit price</span>
-                        <input className={styles.input} type="number" value={position.exitPrice} onChange={e => handleChange('exitPrice', e.target.value === '' ? null : Number(e.target.value))} />
+                        <input className={styles.input} type="number" value={('exitPrice' in pendingUpdate) ? (pendingUpdate.exitPrice === undefined ? '' : pendingUpdate.exitPrice) : (position.exitPrice ?? '')} onChange={e => handleChange('exitPrice', e.target.value === '' ? undefined : Number(e.target.value))} />
                     </div>
                     <div className={styles.detailsRow}>
                         <span>Stop loss</span>
-                        <input className={styles.input} type="number" value={position.stopLoss} onChange={e => handleChange('stopLoss', e.target.value === '' ? null : Number(e.target.value))} />
+                        <input className={styles.input} type="number" value={('stopLoss' in pendingUpdate) ? (pendingUpdate.stopLoss === undefined ? '' : pendingUpdate.stopLoss) : (position.stopLoss ?? '')} onChange={e => handleChange('stopLoss', e.target.value === '' ? undefined : Number(e.target.value))} />
+                    </div>
+                    <div className={styles.updateButtonRow}>
+                        <button className={styles.updateButton} onClick={handleUpdate}>Update</button>
                     </div>
                 </div>
             )}
