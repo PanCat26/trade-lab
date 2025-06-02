@@ -31,7 +31,7 @@ const testPositions = [
   { id: 30, ticker: 'ASML', security: 'ASML Holding NV', type: 'long', size: 10, entryPrice: 650, exitPrice: 700, stopLoss: 630 }
 ];
 
-const testPositionsForRisk = [
+const testPositionsShort= [
   { id: 1, ticker: 'AAPL', security: 'Apple Inc', type: 'long', size: 10, entryPrice: 150, exitPrice: 165, stopLoss: 140 },
   { id: 2, ticker: 'GOOGL', security: 'Alphabet Inc', type: 'short', size: 5, entryPrice: 2800, exitPrice: 2600, stopLoss: 2850 },
   { id: 3, ticker: 'TSLA', security: 'Tesla Inc', type: 'long', size: 12, entryPrice: 700, exitPrice: 750, stopLoss: 670 },
@@ -39,4 +39,4 @@ const testPositionsForRisk = [
   { id: 5, ticker: 'NFLX', security: 'Netflix Inc', type: 'short', size: 8, entryPrice: 550, exitPrice: 520, stopLoss: 570 }
 ];
 
-export { testPositions, testPositionsForRisk };
+export { testPositions, testPositionsShort };

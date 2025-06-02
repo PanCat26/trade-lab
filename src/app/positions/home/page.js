@@ -32,6 +32,7 @@ export default function Page() {
 
 				const riskMap = {};
 				risks.forEach(({id, risk}) => { riskMap[id] = risk; });
+
 				setPositions(previousPositions => previousPositions.map(position => {
 					if (riskMap.hasOwnProperty(position.id)) {
 						return { ...position, risk: riskMap[position.id] };
@@ -39,7 +40,7 @@ export default function Page() {
 					return position;
 				}));
 			} catch (error) {
-				console.error('Failed to fetch risks:', error);
+				console.error('Failed to update risks:', error);
 				setToast('Failed to fetch risks. Please try again.');
 				setTimeout(() => setToast(''), 2000);
 			}
@@ -47,42 +48,35 @@ export default function Page() {
 	};
 
 	const loadNextPage = useCallback(async () => {
-		if (!hasMore) return;
-
 		const filters = {};
 		if (typeFilter !== 'all') filters.type = typeFilter;
 		if (hasStopLossFilter) filters.stopLoss = true;
 
-		console.log('on client', filters);
-
 		try {
 			const newPositions = await positionProxy.getAll({ page: pageRef.current, limit: PAGE_SIZE, sortBy, order: sortOrder, filters });
 
-			if (pageRef.current === 1) {
-				reloadIdRef.current += 1;
-			}
+			setPositions(prev => [...prev, ...newPositions.data]);
 
-			if (newPositions.data.length) {
-				setPositions(prev => [...prev, ...newPositions.data]);
-				pageRef.current += 1;
-				if (newPositions.data.length < PAGE_SIZE) setHasMore(false);
-				else setHasMore(true);
-			} else {
-				setHasMore(false);
-			}
+			pageRef.current += 1;
+
+			if (newPositions.data.length < PAGE_SIZE) setHasMore(false);
+			else setHasMore(true);
+
 		} catch (error) {
 			console.error('Failed to load positions:', error);
 			setToast('Failed to load positions. Please try again.');
 			setTimeout(() => setToast(''), 2000);
-			setHasMore(false);
 		}
 
-	}, [hasMore, sortBy, sortOrder, typeFilter, hasStopLossFilter]);
+	}, [sortBy, sortOrder, typeFilter, hasStopLossFilter]);
+
+	const reset = () => {
+		setPositions([]);
+		pageRef.current = 1;
+		reloadIdRef.current += 1;
+	};
 
 	useEffect(() => {
-		setPositions([]);
-		setHasMore(true);
-		pageRef.current = 1;
 		loadNextPage();
 	}, [sortBy, sortOrder, typeFilter, hasStopLossFilter]);
 
@@ -98,9 +92,7 @@ export default function Page() {
 			const isMovedBySort = sortBy !== 'id' && sortBy in updatedPosition && originalPosition[sortBy] !== updatedPosition[sortBy];
 
 			if (isFilteredOutByType || isFilteredOutByStopLoss || isMovedBySort) {
-				setPositions([]);
-				setHasMore(true);
-				pageRef.current = 1;
+				reset();
 				loadNextPage();
 			} else {
 				setPositions((previousPositions) => {
@@ -136,18 +128,24 @@ export default function Page() {
 	};
 
 	const handleSortChange = (value) => {
-		setSortBy(value);
+		if (value !== sortBy) {
+			setSortBy(value);
+			reset();
+		}
 	};
 
 	const handleSortOrderToggle = () => {
 		setSortOrder(previousSortOrder => (previousSortOrder === 'asc' ? 'desc' : 'asc'));
+		reset();
 	};
 
 	const handleFilterChange = (filterType, value) => {
-		if (filterType === 'type') {
+		if (filterType === 'type' && value !== typeFilter) {
 			setTypeFilter(value);
-		} else if (filterType === 'stopLoss') {
+			reset();
+		} else if (filterType === 'stopLoss' && value !== hasStopLossFilter) {
 			setHasStopLossFilter(value);
+			reset();
 		}
 	};
 
@@ -180,6 +178,7 @@ export default function Page() {
             className={styles.sortSelect}
             value={sortBy}
             onChange={e => handleSortChange(e.target.value)}
+			aria-label="Sort by"
           >
             <option value="id">Default</option>
             <option value="size">Position size</option>

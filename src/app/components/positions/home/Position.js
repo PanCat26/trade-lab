@@ -36,7 +36,7 @@ export default function Position({ position, onUpdate, onDelete }) {
     return (
         <div className={styles.position}>
             <div className={styles.titleRow}>
-                <div className={styles.titleText} onClick={handleToggleDetails}>
+                <div className={styles.titleText} onClick={handleToggleDetails} aria-label={`Toggle details for position for ${position.security}`}>
                     <span className={styles.ticker}>
                         {position.ticker}
                         <span
@@ -54,7 +54,7 @@ export default function Position({ position, onUpdate, onDelete }) {
                     </span>
                     <div className={styles.security} title={position.security}>{position.security}</div>
                 </div>
-                <button className={styles.deleteButton} onClick={handleDelete}>
+                <button className={styles.deleteButton} onClick={handleDelete} aria-label={`Delete position for ${position.security}`}>
                     <svg xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 0 24 24" width="24px" fill="#0"><path d="M0 0h24v24H0z" fill="none"/><path d="M19 6.41L17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"/></svg>
                 </button>
             </div>
@@ -85,7 +85,7 @@ export default function Position({ position, onUpdate, onDelete }) {
                         <input className={styles.input} type="number" value={('stopLoss' in pendingUpdate) ? (pendingUpdate.stopLoss === undefined ? '' : pendingUpdate.stopLoss) : (position.stopLoss ?? '')} onChange={e => handleChange('stopLoss', e.target.value === '' ? undefined : Number(e.target.value))} />
                     </div>
                     <div className={styles.updateButtonRow}>
-                        <button className={styles.updateButton} onClick={handleUpdate}>Update</button>
+                        <button className={styles.updateButton} onClick={handleUpdate} aria-label={`Update position for ${position.security}`}>Update</button>
                     </div>
                 </div>
             )}

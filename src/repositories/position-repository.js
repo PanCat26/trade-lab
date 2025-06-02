@@ -14,9 +14,6 @@ const positionRepository = {
             results = results.filter(position => position.type === filters.type);
         }
 
-        //print filter to console in server
-        console.log('Applying filters:', filters);
-
         if (filters.stopLoss) {
             results = results.filter(position => position.stopLoss != undefined);
         }
@@ -106,6 +103,8 @@ const positionRepository = {
         const n = sorted.length;
         const lowThreshold = sorted[Math.floor(n / 3)] ?? 0;
         const medThreshold = sorted[Math.floor((2 * n) / 3)] ?? 0;
+
+        console.log('low', lowThreshold, 'med', medThreshold);
 
         return filteredPositions.map(position => {
             const riskValue = (position.stopLoss == null || position.stopLoss === undefined)

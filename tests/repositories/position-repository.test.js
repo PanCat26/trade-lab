@@ -1,5 +1,5 @@
 import positionRepository,  { setPositions } from '@/repositories/position-repository.js';
-import { testPositions, testPositionsForRisk }  from '@/data/seed/test-positions.js';
+import { testPositions, testPositionsShort }  from '@/data/seed/test-positions.js';
 
 describe('Position Repository', () => {
 
@@ -119,7 +119,7 @@ describe('Position Repository', () => {
     });
 
     test('getAll should compute risks correctly', async () => {
-        await setPositions([...testPositionsForRisk]);
+        await setPositions([...testPositionsShort]);
         const result = await positionRepository.getAll({ limit: 5 });
         expect(result.data.length).toBe(5);
         expect(result.data[0].risk).toBe('low');
@@ -170,7 +170,7 @@ describe('Position Repository', () => {
     });
 
     test('getRisksByIds should return risks for specified IDs', async () => {
-        await setPositions([...testPositionsForRisk]);
+        await setPositions([...testPositionsShort]);
         const risks = await positionRepository.getRisksByIds([1, 2, 3, 4, 5]);
         expect(risks.length).toBe(5);
         expect(risks[0].risk).toBe('low');
