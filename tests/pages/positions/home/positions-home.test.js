@@ -75,7 +75,7 @@ describe('Positions Home Page', () => {
         await waitFor(() => {
             expect(positionProxy.update).toHaveBeenCalledWith(expect.objectContaining({ id: testPositionsShort[0].id }));
         });
-        expect(await screen.findByText('Update successful!', {}, {timeout: 3000})).toBeInTheDocument();
+        expect(await screen.findByText('Position updated successfully!', {}, {timeout: 3000})).toBeInTheDocument();
     });
 
     test('Filters type long positions', async () => {
@@ -126,5 +126,16 @@ describe('Positions Home Page', () => {
         const renderedTexts = renderedElements.map(el => el.textContent);
 
         expect(renderedTexts).toEqual(sortedPositions);
+    });
+
+    test('Opens add menu when Add button is clicked', async () => {
+        render(<Page />);
+
+        expect(screen.queryByText('New position')).not.toBeInTheDocument();
+
+        const addButton = screen.getByRole('button', { name: /add/i });
+        fireEvent.click(addButton);
+
+        expect(await screen.findByText('New position')).toBeInTheDocument();
     });
 });

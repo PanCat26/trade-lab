@@ -4,9 +4,6 @@ import positionProxy from '@/proxies/position-proxy';
 import { useEffect, useState } from 'react';
 import styles from './page.module.css';
 
-//
-import AddMenu from '@/app/components/positions/home/AddMenu';
-
 export default function Page() {
     const [longCount, setLongCount] = useState(0);
     const [shortCount, setShortCount] = useState(0);
@@ -41,7 +38,7 @@ export default function Page() {
     const stopLossWidth = (stopLossCount / totalStopLossCount) * 100;
     const noStopLossWidth = (noStopLossCount / totalStopLossCount) * 100;
 
-    /*return (
+    return (
     <>
         <h2 className={styles.statisticsTitle}>Statistics</h2>
         <div className={styles.horizontalSingleBarChartHeader}>
@@ -73,7 +70,5 @@ export default function Page() {
                 title={`${noStopLossWidth.toFixed(2)}%`}
             ></div>
         </div>
-    </>);*/
-    //return addmenu
-    return <AddMenu onAdd={() => {}} onClose={() => {}} />;
+    </>);
 }
