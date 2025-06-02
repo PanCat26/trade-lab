@@ -50,12 +50,15 @@ export default function Page() {
 	};
 
 	const loadNextPage = useCallback(async () => {
+		const pastReloadId = reloadIdRef.current;
+
 		const filters = {};
 		if (typeFilter !== 'all') filters.type = typeFilter;
 		if (hasStopLossFilter) filters.stopLoss = true;
 
 		try {
 			const newPositions = await positionProxy.getAll({ page: pageRef.current, limit: PAGE_SIZE, sortBy, order: sortOrder, filters });
+			if (pastReloadId !== reloadIdRef.current) return;
 
 			setPositions(prev => [...prev, ...newPositions.data]);
 
@@ -79,6 +82,7 @@ export default function Page() {
 	};
 
 	useEffect(() => {
+		reset();
 		loadNextPage();
 	}, [sortBy, sortOrder, typeFilter, hasStopLossFilter]);
 

@@ -112,9 +112,11 @@ const positionRepository = {
         const lowThreshold = sorted[Math.floor(n / 3)] ?? 0;
         const medThreshold = sorted[Math.floor((2 * n) / 3)] ?? 0;
 
-        console.log('low', lowThreshold, 'med', medThreshold);
-
         return filteredPositions.map(position => {
+            if (position.stopLoss === null || position.stopLoss === undefined) {
+                return { ...position, risk: 'high' };
+            }
+
             const riskValue = (position.stopLoss == null || position.stopLoss === undefined)
                 ? Number.POSITIVE_INFINITY
                 : Math.abs(position.entryPrice - position.stopLoss) * position.size;
