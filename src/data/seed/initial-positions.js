@@ -1,12 +1,12 @@
-const initialPositions= [
+/*const initialPositions= [
   { id: 1, ticker: 'AAPL', security: 'Apple Inc', type: 'long', size: 10, entryPrice: 150, exitPrice: 165, stopLoss: 140 },
   { id: 2, ticker: 'GOOGL', security: 'Alphabet Inc', type: 'short', size: 5, entryPrice: 2800, exitPrice: 2600, stopLoss: 2850 },
   { id: 3, ticker: 'TSLA', security: 'Tesla Inc', type: 'long', size: 12, entryPrice: 700, exitPrice: 750, stopLoss: 670 },
   { id: 4, ticker: 'MSFT', security: 'Microsoft Corp', type: 'long', size: 20, entryPrice: 290, exitPrice: 305 },
   { id: 5, ticker: 'NFLX', security: 'Netflix Inc', type: 'short', size: 8, entryPrice: 550, exitPrice: 520, stopLoss: 570 }
-];
+];*/
 
-const initialPositions1 = [
+const initialPositions = [
   {
     "id": 1,
     "ticker": "AAPL",

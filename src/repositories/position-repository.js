@@ -7,7 +7,7 @@ export async function setPositions(newPositions) {
 } 
 
 const positionRepository = {
-    async getAll({page = 1, limit = 5, sortBy, order = 'asc', filters = {}} = {}) {
+    async getAll({page = 1, limit = 20, sortBy, order = 'asc', filters = {}, noPagination = false} = {}) {
         let results = [...positions];
 
         if (filters.type) {
@@ -26,6 +26,14 @@ const positionRepository = {
                 if (firstVal > secondVal) return order === 'asc' ? 1 : -1;
                 return 0;
             });
+        }
+
+        if (noPagination) {
+            return {
+                data: results,
+                totalPositions: results.length,
+                totalPages: 1
+            };
         }
 
         const allRisks = positions.map(position =>
