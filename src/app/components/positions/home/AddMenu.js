@@ -14,7 +14,9 @@ export default function AddMenu({ onAdd, onClose }) {
     const [newPosition, setNewPosition] = useState({});
 
     const handleAdd = () => {
-
+        onAdd(newPosition);
+        onClose();
+        setNewPosition({});
     };
 
     return (

@@ -3,6 +3,7 @@
 import { useState, useEffect, useCallback, useRef } from 'react';
 import InfiniteScroll from 'react-infinite-scroll-component';
 import Position from '@/app/components/positions/home/Position';
+import AddMenu from '@/app/components/positions/home/AddMenu';
 import positionProxy from '@/proxies/position-proxy';
 import styles from './page.module.css';
 
@@ -18,6 +19,7 @@ export default function Page() {
 	const [sortOrder, setSortOrder] = useState('asc');
 	const [typeFilter, setTypeFilter] = useState('all');
 	const [hasStopLossFilter, setHasStopLossFilter] = useState(false);
+	const [addMenu, setAddMenu] = useState(false);
 
 	const recomputeRisks = (positions) => {
 		if (!positions.length) return;
@@ -101,7 +103,7 @@ export default function Page() {
 					return newPositions;
 				});
 			}
-			setToast('Update successful!');
+			setToast('Position updated successfully!');
 			setTimeout(() => setToast(''), 2000);
 		} catch (error) {
 			console.error('Failed to update position:', error);
@@ -123,6 +125,22 @@ export default function Page() {
 		} catch (error) {
 			console.error('Failed to delete position:', error);
 			setToast('Delete failed. Please try again.');
+			setTimeout(() => setToast(''), 2000);
+		}
+	};
+
+	const handleAdd = async (newPosition) => {
+		console.log('Adding new position:', newPosition);
+		try {
+			await positionProxy.add(newPosition);
+			reset();
+			loadNextPage();
+			setToast('Position added successfully!');
+			setTimeout(() => setToast(''), 2000);
+			setAddMenu(false);
+		} catch (error) {
+			console.error('Failed to add position:', error);
+			setToast('Failed to add position. Please try again.');
 			setTimeout(() => setToast(''), 2000);
 		}
 	};
@@ -149,6 +167,10 @@ export default function Page() {
 		}
 	};
 
+	const handleAddButtonClick = () => {
+		setAddMenu(true);
+	};
+
 	return (
 		<>
 			{toast && (
@@ -156,9 +178,11 @@ export default function Page() {
 					{toast}
 				</div>
 			)}
+			{addMenu && <AddMenu onClose={() => setAddMenu(false)} onAdd={handleAdd} />}
       <div className={styles.positionsHeader}>
         <h1>Positions</h1>
-		<button className={styles.addButton}>
+		<button className={styles.addButton} onClick={handleAddButtonClick}>
+			<svg xmlns="http://www.w3.org/2000/svg" height="20px" viewBox="0 0 24 24" width="20px" fill="#0"><path d="M0 0h24v24H0V0z" fill="none"/><path d="M19 13h-6v6h-2v-6H5v-2h6V5h2v6h6v2z"/></svg>
 			<span>Add</span>
 		</button>
       </div>

@@ -30,10 +30,17 @@
 .addButton {
     border: none;
     padding: 0;
+    display: inline-flex;
+    align-items: center;
     background: none;
     font-size: 20px;
     font-family: var(--font-ibm-mono), Courier New, Courier, monospace;
-    font-weight: 700;
+    font-weight: 600;
+    cursor: pointer;
+}
+
+.addButton > svg {
+    display: block;
 }
 
 .sortFilterMenu {

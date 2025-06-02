@@ -7,7 +7,7 @@ export async function setPositions(newPositions) {
 } 
 
 const positionRepository = {
-    async getAll({page = 1, limit = 20, sortBy, order = 'asc', filters = {}, noPagination = false} = {}) {
+    async getAll({page = 1, limit = 5, sortBy, order = 'asc', filters = {}, noPagination = false} = {}) {
         let results = [...positions];
 
         if (filters.type) {
