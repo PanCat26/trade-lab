@@ -7,7 +7,7 @@ import { render, screen, waitFor, fireEvent } from '@testing-library/react';
 import '@testing-library/jest-dom';
 import Page from '@/app/positions/home/page';
 import positionProxy from '@/proxies/position-proxy';
-import { testPositionsShort } from '@/data/seed/test-positions';
+import { testPositionsShort } from '@/data/test/test-positions';
 
 jest.mock('@/proxies/position-proxy');
 

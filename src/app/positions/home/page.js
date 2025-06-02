@@ -158,6 +158,9 @@ export default function Page() {
 			)}
       <div className={styles.positionsHeader}>
         <h1>Positions</h1>
+		<button className={styles.addButton}>
+			<span>Add</span>
+		</button>
       </div>
       <div className={styles.sortFilterMenu}>
         <div className={styles.sortFilterToolbar}>

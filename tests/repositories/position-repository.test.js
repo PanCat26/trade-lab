@@ -1,5 +1,5 @@
 import positionRepository,  { setPositions } from '@/repositories/position-repository.js';
-import { testPositions, testPositionsShort }  from '@/data/seed/test-positions.js';
+import { testPositions, testPositionsShort }  from '@/data/test/test-positions.js';
 
 describe('Position Repository', () => {
 

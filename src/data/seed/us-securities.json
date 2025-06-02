@@ -1,0 +1,2114 @@
+[
+  {
+    "security": "3M",
+    "ticker": "MMM"
+  },
+  {
+    "security": "A. O. Smith",
+    "ticker": "AOS"
+  },
+  {
+    "security": "Abbott Laboratories",
+    "ticker": "ABT"
+  },
+  {
+    "security": "AbbVie",
+    "ticker": "ABBV"
+  },
+  {
+    "security": "Accenture",
+    "ticker": "ACN"
+  },
+  {
+    "security": "Adobe Inc.",
+    "ticker": "ADBE"
+  },
+  {
+    "security": "Advanced Micro Devices",
+    "ticker": "AMD"
+  },
+  {
+    "security": "AES Corporation",
+    "ticker": "AES"
+  },
+  {
+    "security": "Aflac",
+    "ticker": "AFL"
+  },
+  {
+    "security": "Agilent Technologies",
+    "ticker": "A"
+  },
+  {
+    "security": "Air Products",
+    "ticker": "APD"
+  },
+  {
+    "security": "Airbnb",
+    "ticker": "ABNB"
+  },
+  {
+    "security": "Akamai Technologies",
+    "ticker": "AKAM"
+  },
+  {
+    "security": "Albemarle Corporation",
+    "ticker": "ALB"
+  },
+  {
+    "security": "Alexandria Real Estate Equities",
+    "ticker": "ARE"
+  },
+  {
+    "security": "Align Technology",
+    "ticker": "ALGN"
+  },
+  {
+    "security": "Allegion",
+    "ticker": "ALLE"
+  },
+  {
+    "security": "Alliant Energy",
+    "ticker": "LNT"
+  },
+  {
+    "security": "Allstate",
+    "ticker": "ALL"
+  },
+  {
+    "security": "Alphabet Inc. (Class A)",
+    "ticker": "GOOGL"
+  },
+  {
+    "security": "Alphabet Inc. (Class C)",
+    "ticker": "GOOG"
+  },
+  {
+    "security": "Altria",
+    "ticker": "MO"
+  },
+  {
+    "security": "Amazon",
+    "ticker": "AMZN"
+  },
+  {
+    "security": "Amcor",
+    "ticker": "AMCR"
+  },
+  {
+    "security": "Ameren",
+    "ticker": "AEE"
+  },
+  {
+    "security": "American Electric Power",
+    "ticker": "AEP"
+  },
+  {
+    "security": "American Express",
+    "ticker": "AXP"
+  },
+  {
+    "security": "American International Group",
+    "ticker": "AIG"
+  },
+  {
+    "security": "American Tower",
+    "ticker": "AMT"
+  },
+  {
+    "security": "American Water Works",
+    "ticker": "AWK"
+  },
+  {
+    "security": "Ameriprise Financial",
+    "ticker": "AMP"
+  },
+  {
+    "security": "Ametek",
+    "ticker": "AME"
+  },
+  {
+    "security": "Amgen",
+    "ticker": "AMGN"
+  },
+  {
+    "security": "Amphenol",
+    "ticker": "APH"
+  },
+  {
+    "security": "Analog Devices",
+    "ticker": "ADI"
+  },
+  {
+    "security": "Ansys",
+    "ticker": "ANSS"
+  },
+  {
+    "security": "Aon plc",
+    "ticker": "AON"
+  },
+  {
+    "security": "APA Corporation",
+    "ticker": "APA"
+  },
+  {
+    "security": "Apollo Global Management",
+    "ticker": "APO"
+  },
+  {
+    "security": "Apple Inc.",
+    "ticker": "AAPL"
+  },
+  {
+    "security": "Applied Materials",
+    "ticker": "AMAT"
+  },
+  {
+    "security": "Aptiv",
+    "ticker": "APTV"
+  },
+  {
+    "security": "Arch Capital Group",
+    "ticker": "ACGL"
+  },
+  {
+    "security": "Archer Daniels Midland",
+    "ticker": "ADM"
+  },
+  {
+    "security": "Arista Networks",
+    "ticker": "ANET"
+  },
+  {
+    "security": "Arthur J. Gallagher & Co.",
+    "ticker": "AJG"
+  },
+  {
+    "security": "Assurant",
+    "ticker": "AIZ"
+  },
+  {
+    "security": "AT&T",
+    "ticker": "T"
+  },
+  {
+    "security": "Atmos Energy",
+    "ticker": "ATO"
+  },
+  {
+    "security": "Autodesk",
+    "ticker": "ADSK"
+  },
+  {
+    "security": "Automatic Data Processing",
+    "ticker": "ADP"
+  },
+  {
+    "security": "AutoZone",
+    "ticker": "AZO"
+  },
+  {
+    "security": "AvalonBay Communities",
+    "ticker": "AVB"
+  },
+  {
+    "security": "Avery Dennison",
+    "ticker": "AVY"
+  },
+  {
+    "security": "Axon Enterprise",
+    "ticker": "AXON"
+  },
+  {
+    "security": "Baker Hughes",
+    "ticker": "BKR"
+  },
+  {
+    "security": "Ball Corporation",
+    "ticker": "BALL"
+  },
+  {
+    "security": "Bank of America",
+    "ticker": "BAC"
+  },
+  {
+    "security": "Baxter International",
+    "ticker": "BAX"
+  },
+  {
+    "security": "Becton Dickinson",
+    "ticker": "BDX"
+  },
+  {
+    "security": "Berkshire Hathaway",
+    "ticker": "BRK.B"
+  },
+  {
+    "security": "Best Buy",
+    "ticker": "BBY"
+  },
+  {
+    "security": "Bio-Techne",
+    "ticker": "TECH"
+  },
+  {
+    "security": "Biogen",
+    "ticker": "BIIB"
+  },
+  {
+    "security": "BlackRock",
+    "ticker": "BLK"
+  },
+  {
+    "security": "Blackstone Inc.",
+    "ticker": "BX"
+  },
+  {
+    "security": "BNY Mellon",
+    "ticker": "BK"
+  },
+  {
+    "security": "Boeing",
+    "ticker": "BA"
+  },
+  {
+    "security": "Booking Holdings",
+    "ticker": "BKNG"
+  },
+  {
+    "security": "Boston Scientific",
+    "ticker": "BSX"
+  },
+  {
+    "security": "Bristol Myers Squibb",
+    "ticker": "BMY"
+  },
+  {
+    "security": "Broadcom",
+    "ticker": "AVGO"
+  },
+  {
+    "security": "Broadridge Financial Solutions",
+    "ticker": "BR"
+  },
+  {
+    "security": "Brown & Brown",
+    "ticker": "BRO"
+  },
+  {
+    "security": "Brown\u2013Forman",
+    "ticker": "BF.B"
+  },
+  {
+    "security": "Builders FirstSource",
+    "ticker": "BLDR"
+  },
+  {
+    "security": "Bunge Global",
+    "ticker": "BG"
+  },
+  {
+    "security": "BXP, Inc.",
+    "ticker": "BXP"
+  },
+  {
+    "security": "C.H. Robinson",
+    "ticker": "CHRW"
+  },
+  {
+    "security": "Cadence Design Systems",
+    "ticker": "CDNS"
+  },
+  {
+    "security": "Caesars Entertainment",
+    "ticker": "CZR"
+  },
+  {
+    "security": "Camden Property Trust",
+    "ticker": "CPT"
+  },
+  {
+    "security": "Campbell's Company (The)",
+    "ticker": "CPB"
+  },
+  {
+    "security": "Capital One",
+    "ticker": "COF"
+  },
+  {
+    "security": "Cardinal Health",
+    "ticker": "CAH"
+  },
+  {
+    "security": "CarMax",
+    "ticker": "KMX"
+  },
+  {
+    "security": "Carnival",
+    "ticker": "CCL"
+  },
+  {
+    "security": "Carrier Global",
+    "ticker": "CARR"
+  },
+  {
+    "security": "Caterpillar Inc.",
+    "ticker": "CAT"
+  },
+  {
+    "security": "Cboe Global Markets",
+    "ticker": "CBOE"
+  },
+  {
+    "security": "CBRE Group",
+    "ticker": "CBRE"
+  },
+  {
+    "security": "CDW Corporation",
+    "ticker": "CDW"
+  },
+  {
+    "security": "Cencora",
+    "ticker": "COR"
+  },
+  {
+    "security": "Centene Corporation",
+    "ticker": "CNC"
+  },
+  {
+    "security": "CenterPoint Energy",
+    "ticker": "CNP"
+  },
+  {
+    "security": "CF Industries",
+    "ticker": "CF"
+  },
+  {
+    "security": "Charles River Laboratories",
+    "ticker": "CRL"
+  },
+  {
+    "security": "Charles Schwab Corporation",
+    "ticker": "SCHW"
+  },
+  {
+    "security": "Charter Communications",
+    "ticker": "CHTR"
+  },
+  {
+    "security": "Chevron Corporation",
+    "ticker": "CVX"
+  },
+  {
+    "security": "Chipotle Mexican Grill",
+    "ticker": "CMG"
+  },
+  {
+    "security": "Chubb Limited",
+    "ticker": "CB"
+  },
+  {
+    "security": "Church & Dwight",
+    "ticker": "CHD"
+  },
+  {
+    "security": "Cigna",
+    "ticker": "CI"
+  },
+  {
+    "security": "Cincinnati Financial",
+    "ticker": "CINF"
+  },
+  {
+    "security": "Cintas",
+    "ticker": "CTAS"
+  },
+  {
+    "security": "Cisco",
+    "ticker": "CSCO"
+  },
+  {
+    "security": "Citigroup",
+    "ticker": "C"
+  },
+  {
+    "security": "Citizens Financial Group",
+    "ticker": "CFG"
+  },
+  {
+    "security": "Clorox",
+    "ticker": "CLX"
+  },
+  {
+    "security": "CME Group",
+    "ticker": "CME"
+  },
+  {
+    "security": "CMS Energy",
+    "ticker": "CMS"
+  },
+  {
+    "security": "Coca-Cola Company (The)",
+    "ticker": "KO"
+  },
+  {
+    "security": "Cognizant",
+    "ticker": "CTSH"
+  },
+  {
+    "security": "Coinbase",
+    "ticker": "COIN"
+  },
+  {
+    "security": "Colgate-Palmolive",
+    "ticker": "CL"
+  },
+  {
+    "security": "Comcast",
+    "ticker": "CMCSA"
+  },
+  {
+    "security": "Conagra Brands",
+    "ticker": "CAG"
+  },
+  {
+    "security": "ConocoPhillips",
+    "ticker": "COP"
+  },
+  {
+    "security": "Consolidated Edison",
+    "ticker": "ED"
+  },
+  {
+    "security": "Constellation Brands",
+    "ticker": "STZ"
+  },
+  {
+    "security": "Constellation Energy",
+    "ticker": "CEG"
+  },
+  {
+    "security": "Cooper Companies (The)",
+    "ticker": "COO"
+  },
+  {
+    "security": "Copart",
+    "ticker": "CPRT"
+  },
+  {
+    "security": "Corning Inc.",
+    "ticker": "GLW"
+  },
+  {
+    "security": "Corpay",
+    "ticker": "CPAY"
+  },
+  {
+    "security": "Corteva",
+    "ticker": "CTVA"
+  },
+  {
+    "security": "CoStar Group",
+    "ticker": "CSGP"
+  },
+  {
+    "security": "Costco",
+    "ticker": "COST"
+  },
+  {
+    "security": "Coterra",
+    "ticker": "CTRA"
+  },
+  {
+    "security": "CrowdStrike",
+    "ticker": "CRWD"
+  },
+  {
+    "security": "Crown Castle",
+    "ticker": "CCI"
+  },
+  {
+    "security": "CSX Corporation",
+    "ticker": "CSX"
+  },
+  {
+    "security": "Cummins",
+    "ticker": "CMI"
+  },
+  {
+    "security": "CVS Health",
+    "ticker": "CVS"
+  },
+  {
+    "security": "Danaher Corporation",
+    "ticker": "DHR"
+  },
+  {
+    "security": "Darden Restaurants",
+    "ticker": "DRI"
+  },
+  {
+    "security": "DaVita",
+    "ticker": "DVA"
+  },
+  {
+    "security": "Dayforce",
+    "ticker": "DAY"
+  },
+  {
+    "security": "Deckers Brands",
+    "ticker": "DECK"
+  },
+  {
+    "security": "Deere & Company",
+    "ticker": "DE"
+  },
+  {
+    "security": "Dell Technologies",
+    "ticker": "DELL"
+  },
+  {
+    "security": "Delta Air Lines",
+    "ticker": "DAL"
+  },
+  {
+    "security": "Devon Energy",
+    "ticker": "DVN"
+  },
+  {
+    "security": "Dexcom",
+    "ticker": "DXCM"
+  },
+  {
+    "security": "Diamondback Energy",
+    "ticker": "FANG"
+  },
+  {
+    "security": "Digital Realty",
+    "ticker": "DLR"
+  },
+  {
+    "security": "Dollar General",
+    "ticker": "DG"
+  },
+  {
+    "security": "Dollar Tree",
+    "ticker": "DLTR"
+  },
+  {
+    "security": "Dominion Energy",
+    "ticker": "D"
+  },
+  {
+    "security": "Domino's",
+    "ticker": "DPZ"
+  },
+  {
+    "security": "DoorDash",
+    "ticker": "DASH"
+  },
+  {
+    "security": "Dover Corporation",
+    "ticker": "DOV"
+  },
+  {
+    "security": "Dow Inc.",
+    "ticker": "DOW"
+  },
+  {
+    "security": "D. R. Horton",
+    "ticker": "DHI"
+  },
+  {
+    "security": "DTE Energy",
+    "ticker": "DTE"
+  },
+  {
+    "security": "Duke Energy",
+    "ticker": "DUK"
+  },
+  {
+    "security": "DuPont",
+    "ticker": "DD"
+  },
+  {
+    "security": "Eastman Chemical Company",
+    "ticker": "EMN"
+  },
+  {
+    "security": "Eaton Corporation",
+    "ticker": "ETN"
+  },
+  {
+    "security": "eBay Inc.",
+    "ticker": "EBAY"
+  },
+  {
+    "security": "Ecolab",
+    "ticker": "ECL"
+  },
+  {
+    "security": "Edison International",
+    "ticker": "EIX"
+  },
+  {
+    "security": "Edwards Lifesciences",
+    "ticker": "EW"
+  },
+  {
+    "security": "Electronic Arts",
+    "ticker": "EA"
+  },
+  {
+    "security": "Elevance Health",
+    "ticker": "ELV"
+  },
+  {
+    "security": "Emerson Electric",
+    "ticker": "EMR"
+  },
+  {
+    "security": "Enphase Energy",
+    "ticker": "ENPH"
+  },
+  {
+    "security": "Entergy",
+    "ticker": "ETR"
+  },
+  {
+    "security": "EOG Resources",
+    "ticker": "EOG"
+  },
+  {
+    "security": "EPAM Systems",
+    "ticker": "EPAM"
+  },
+  {
+    "security": "EQT Corporation",
+    "ticker": "EQT"
+  },
+  {
+    "security": "Equifax",
+    "ticker": "EFX"
+  },
+  {
+    "security": "Equinix",
+    "ticker": "EQIX"
+  },
+  {
+    "security": "Equity Residential",
+    "ticker": "EQR"
+  },
+  {
+    "security": "Erie Indemnity",
+    "ticker": "ERIE"
+  },
+  {
+    "security": "Essex Property Trust",
+    "ticker": "ESS"
+  },
+  {
+    "security": "Est\u00e9e Lauder Companies (The)",
+    "ticker": "EL"
+  },
+  {
+    "security": "Everest Group",
+    "ticker": "EG"
+  },
+  {
+    "security": "Evergy",
+    "ticker": "EVRG"
+  },
+  {
+    "security": "Eversource Energy",
+    "ticker": "ES"
+  },
+  {
+    "security": "Exelon",
+    "ticker": "EXC"
+  },
+  {
+    "security": "Expand Energy",
+    "ticker": "EXE"
+  },
+  {
+    "security": "Expedia Group",
+    "ticker": "EXPE"
+  },
+  {
+    "security": "Expeditors International",
+    "ticker": "EXPD"
+  },
+  {
+    "security": "Extra Space Storage",
+    "ticker": "EXR"
+  },
+  {
+    "security": "ExxonMobil",
+    "ticker": "XOM"
+  },
+  {
+    "security": "F5, Inc.",
+    "ticker": "FFIV"
+  },
+  {
+    "security": "FactSet",
+    "ticker": "FDS"
+  },
+  {
+    "security": "Fair Isaac",
+    "ticker": "FICO"
+  },
+  {
+    "security": "Fastenal",
+    "ticker": "FAST"
+  },
+  {
+    "security": "Federal Realty Investment Trust",
+    "ticker": "FRT"
+  },
+  {
+    "security": "FedEx",
+    "ticker": "FDX"
+  },
+  {
+    "security": "Fidelity National Information Services",
+    "ticker": "FIS"
+  },
+  {
+    "security": "Fifth Third Bancorp",
+    "ticker": "FITB"
+  },
+  {
+    "security": "First Solar",
+    "ticker": "FSLR"
+  },
+  {
+    "security": "FirstEnergy",
+    "ticker": "FE"
+  },
+  {
+    "security": "Fiserv",
+    "ticker": "FI"
+  },
+  {
+    "security": "Ford Motor Company",
+    "ticker": "F"
+  },
+  {
+    "security": "Fortinet",
+    "ticker": "FTNT"
+  },
+  {
+    "security": "Fortive",
+    "ticker": "FTV"
+  },
+  {
+    "security": "Fox Corporation (Class A)",
+    "ticker": "FOXA"
+  },
+  {
+    "security": "Fox Corporation (Class B)",
+    "ticker": "FOX"
+  },
+  {
+    "security": "Franklin Resources",
+    "ticker": "BEN"
+  },
+  {
+    "security": "Freeport-McMoRan",
+    "ticker": "FCX"
+  },
+  {
+    "security": "Garmin",
+    "ticker": "GRMN"
+  },
+  {
+    "security": "Gartner",
+    "ticker": "IT"
+  },
+  {
+    "security": "GE Aerospace",
+    "ticker": "GE"
+  },
+  {
+    "security": "GE HealthCare",
+    "ticker": "GEHC"
+  },
+  {
+    "security": "GE Vernova",
+    "ticker": "GEV"
+  },
+  {
+    "security": "Gen Digital",
+    "ticker": "GEN"
+  },
+  {
+    "security": "Generac",
+    "ticker": "GNRC"
+  },
+  {
+    "security": "General Dynamics",
+    "ticker": "GD"
+  },
+  {
+    "security": "General Mills",
+    "ticker": "GIS"
+  },
+  {
+    "security": "General Motors",
+    "ticker": "GM"
+  },
+  {
+    "security": "Genuine Parts Company",
+    "ticker": "GPC"
+  },
+  {
+    "security": "Gilead Sciences",
+    "ticker": "GILD"
+  },
+  {
+    "security": "Global Payments",
+    "ticker": "GPN"
+  },
+  {
+    "security": "Globe Life",
+    "ticker": "GL"
+  },
+  {
+    "security": "GoDaddy",
+    "ticker": "GDDY"
+  },
+  {
+    "security": "Goldman Sachs",
+    "ticker": "GS"
+  },
+  {
+    "security": "Halliburton",
+    "ticker": "HAL"
+  },
+  {
+    "security": "Hartford (The)",
+    "ticker": "HIG"
+  },
+  {
+    "security": "Hasbro",
+    "ticker": "HAS"
+  },
+  {
+    "security": "HCA Healthcare",
+    "ticker": "HCA"
+  },
+  {
+    "security": "Healthpeak Properties",
+    "ticker": "DOC"
+  },
+  {
+    "security": "Henry Schein",
+    "ticker": "HSIC"
+  },
+  {
+    "security": "Hershey Company (The)",
+    "ticker": "HSY"
+  },
+  {
+    "security": "Hess Corporation",
+    "ticker": "HES"
+  },
+  {
+    "security": "Hewlett Packard Enterprise",
+    "ticker": "HPE"
+  },
+  {
+    "security": "Hilton Worldwide",
+    "ticker": "HLT"
+  },
+  {
+    "security": "Hologic",
+    "ticker": "HOLX"
+  },
+  {
+    "security": "Home Depot (The)",
+    "ticker": "HD"
+  },
+  {
+    "security": "Honeywell",
+    "ticker": "HON"
+  },
+  {
+    "security": "Hormel Foods",
+    "ticker": "HRL"
+  },
+  {
+    "security": "Host Hotels & Resorts",
+    "ticker": "HST"
+  },
+  {
+    "security": "Howmet Aerospace",
+    "ticker": "HWM"
+  },
+  {
+    "security": "HP Inc.",
+    "ticker": "HPQ"
+  },
+  {
+    "security": "Hubbell Incorporated",
+    "ticker": "HUBB"
+  },
+  {
+    "security": "Humana",
+    "ticker": "HUM"
+  },
+  {
+    "security": "Huntington Bancshares",
+    "ticker": "HBAN"
+  },
+  {
+    "security": "Huntington Ingalls Industries",
+    "ticker": "HII"
+  },
+  {
+    "security": "IBM",
+    "ticker": "IBM"
+  },
+  {
+    "security": "IDEX Corporation",
+    "ticker": "IEX"
+  },
+  {
+    "security": "Idexx Laboratories",
+    "ticker": "IDXX"
+  },
+  {
+    "security": "Illinois Tool Works",
+    "ticker": "ITW"
+  },
+  {
+    "security": "Incyte",
+    "ticker": "INCY"
+  },
+  {
+    "security": "Ingersoll Rand",
+    "ticker": "IR"
+  },
+  {
+    "security": "Insulet Corporation",
+    "ticker": "PODD"
+  },
+  {
+    "security": "Intel",
+    "ticker": "INTC"
+  },
+  {
+    "security": "Intercontinental Exchange",
+    "ticker": "ICE"
+  },
+  {
+    "security": "International Flavors & Fragrances",
+    "ticker": "IFF"
+  },
+  {
+    "security": "International Paper",
+    "ticker": "IP"
+  },
+  {
+    "security": "Interpublic Group of Companies (The)",
+    "ticker": "IPG"
+  },
+  {
+    "security": "Intuit",
+    "ticker": "INTU"
+  },
+  {
+    "security": "Intuitive Surgical",
+    "ticker": "ISRG"
+  },
+  {
+    "security": "Invesco",
+    "ticker": "IVZ"
+  },
+  {
+    "security": "Invitation Homes",
+    "ticker": "INVH"
+  },
+  {
+    "security": "IQVIA",
+    "ticker": "IQV"
+  },
+  {
+    "security": "Iron Mountain",
+    "ticker": "IRM"
+  },
+  {
+    "security": "J.B. Hunt",
+    "ticker": "JBHT"
+  },
+  {
+    "security": "Jabil",
+    "ticker": "JBL"
+  },
+  {
+    "security": "Jack Henry & Associates",
+    "ticker": "JKHY"
+  },
+  {
+    "security": "Jacobs Solutions",
+    "ticker": "J"
+  },
+  {
+    "security": "Johnson & Johnson",
+    "ticker": "JNJ"
+  },
+  {
+    "security": "Johnson Controls",
+    "ticker": "JCI"
+  },
+  {
+    "security": "JPMorgan Chase",
+    "ticker": "JPM"
+  },
+  {
+    "security": "Juniper Networks",
+    "ticker": "JNPR"
+  },
+  {
+    "security": "Kellanova",
+    "ticker": "K"
+  },
+  {
+    "security": "Kenvue",
+    "ticker": "KVUE"
+  },
+  {
+    "security": "Keurig Dr Pepper",
+    "ticker": "KDP"
+  },
+  {
+    "security": "KeyCorp",
+    "ticker": "KEY"
+  },
+  {
+    "security": "Keysight Technologies",
+    "ticker": "KEYS"
+  },
+  {
+    "security": "Kimberly-Clark",
+    "ticker": "KMB"
+  },
+  {
+    "security": "Kimco Realty",
+    "ticker": "KIM"
+  },
+  {
+    "security": "Kinder Morgan",
+    "ticker": "KMI"
+  },
+  {
+    "security": "KKR & Co.",
+    "ticker": "KKR"
+  },
+  {
+    "security": "KLA Corporation",
+    "ticker": "KLAC"
+  },
+  {
+    "security": "Kraft Heinz",
+    "ticker": "KHC"
+  },
+  {
+    "security": "Kroger",
+    "ticker": "KR"
+  },
+  {
+    "security": "L3Harris",
+    "ticker": "LHX"
+  },
+  {
+    "security": "Labcorp",
+    "ticker": "LH"
+  },
+  {
+    "security": "Lam Research",
+    "ticker": "LRCX"
+  },
+  {
+    "security": "Lamb Weston",
+    "ticker": "LW"
+  },
+  {
+    "security": "Las Vegas Sands",
+    "ticker": "LVS"
+  },
+  {
+    "security": "Leidos",
+    "ticker": "LDOS"
+  },
+  {
+    "security": "Lennar",
+    "ticker": "LEN"
+  },
+  {
+    "security": "Lennox International",
+    "ticker": "LII"
+  },
+  {
+    "security": "Lilly (Eli)",
+    "ticker": "LLY"
+  },
+  {
+    "security": "Linde plc",
+    "ticker": "LIN"
+  },
+  {
+    "security": "Live Nation Entertainment",
+    "ticker": "LYV"
+  },
+  {
+    "security": "LKQ Corporation",
+    "ticker": "LKQ"
+  },
+  {
+    "security": "Lockheed Martin",
+    "ticker": "LMT"
+  },
+  {
+    "security": "Loews Corporation",
+    "ticker": "L"
+  },
+  {
+    "security": "Lowe's",
+    "ticker": "LOW"
+  },
+  {
+    "security": "Lululemon Athletica",
+    "ticker": "LULU"
+  },
+  {
+    "security": "LyondellBasell",
+    "ticker": "LYB"
+  },
+  {
+    "security": "M&T Bank",
+    "ticker": "MTB"
+  },
+  {
+    "security": "Marathon Petroleum",
+    "ticker": "MPC"
+  },
+  {
+    "security": "MarketAxess",
+    "ticker": "MKTX"
+  },
+  {
+    "security": "Marriott International",
+    "ticker": "MAR"
+  },
+  {
+    "security": "Marsh McLennan",
+    "ticker": "MMC"
+  },
+  {
+    "security": "Martin Marietta Materials",
+    "ticker": "MLM"
+  },
+  {
+    "security": "Masco",
+    "ticker": "MAS"
+  },
+  {
+    "security": "Mastercard",
+    "ticker": "MA"
+  },
+  {
+    "security": "Match Group",
+    "ticker": "MTCH"
+  },
+  {
+    "security": "McCormick & Company",
+    "ticker": "MKC"
+  },
+  {
+    "security": "McDonald's",
+    "ticker": "MCD"
+  },
+  {
+    "security": "McKesson Corporation",
+    "ticker": "MCK"
+  },
+  {
+    "security": "Medtronic",
+    "ticker": "MDT"
+  },
+  {
+    "security": "Merck & Co.",
+    "ticker": "MRK"
+  },
+  {
+    "security": "Meta Platforms",
+    "ticker": "META"
+  },
+  {
+    "security": "MetLife",
+    "ticker": "MET"
+  },
+  {
+    "security": "Mettler Toledo",
+    "ticker": "MTD"
+  },
+  {
+    "security": "MGM Resorts",
+    "ticker": "MGM"
+  },
+  {
+    "security": "Microchip Technology",
+    "ticker": "MCHP"
+  },
+  {
+    "security": "Micron Technology",
+    "ticker": "MU"
+  },
+  {
+    "security": "Microsoft",
+    "ticker": "MSFT"
+  },
+  {
+    "security": "Mid-America Apartment Communities",
+    "ticker": "MAA"
+  },
+  {
+    "security": "Moderna",
+    "ticker": "MRNA"
+  },
+  {
+    "security": "Mohawk Industries",
+    "ticker": "MHK"
+  },
+  {
+    "security": "Molina Healthcare",
+    "ticker": "MOH"
+  },
+  {
+    "security": "Molson Coors Beverage Company",
+    "ticker": "TAP"
+  },
+  {
+    "security": "Mondelez International",
+    "ticker": "MDLZ"
+  },
+  {
+    "security": "Monolithic Power Systems",
+    "ticker": "MPWR"
+  },
+  {
+    "security": "Monster Beverage",
+    "ticker": "MNST"
+  },
+  {
+    "security": "Moody's Corporation",
+    "ticker": "MCO"
+  },
+  {
+    "security": "Morgan Stanley",
+    "ticker": "MS"
+  },
+  {
+    "security": "Mosaic Company (The)",
+    "ticker": "MOS"
+  },
+  {
+    "security": "Motorola Solutions",
+    "ticker": "MSI"
+  },
+  {
+    "security": "MSCI Inc.",
+    "ticker": "MSCI"
+  },
+  {
+    "security": "Nasdaq, Inc.",
+    "ticker": "NDAQ"
+  },
+  {
+    "security": "NetApp",
+    "ticker": "NTAP"
+  },
+  {
+    "security": "Netflix",
+    "ticker": "NFLX"
+  },
+  {
+    "security": "Newmont",
+    "ticker": "NEM"
+  },
+  {
+    "security": "News Corp (Class A)",
+    "ticker": "NWSA"
+  },
+  {
+    "security": "News Corp (Class B)",
+    "ticker": "NWS"
+  },
+  {
+    "security": "NextEra Energy",
+    "ticker": "NEE"
+  },
+  {
+    "security": "Nike, Inc.",
+    "ticker": "NKE"
+  },
+  {
+    "security": "NiSource",
+    "ticker": "NI"
+  },
+  {
+    "security": "Nordson Corporation",
+    "ticker": "NDSN"
+  },
+  {
+    "security": "Norfolk Southern",
+    "ticker": "NSC"
+  },
+  {
+    "security": "Northern Trust",
+    "ticker": "NTRS"
+  },
+  {
+    "security": "Northrop Grumman",
+    "ticker": "NOC"
+  },
+  {
+    "security": "Norwegian Cruise Line Holdings",
+    "ticker": "NCLH"
+  },
+  {
+    "security": "NRG Energy",
+    "ticker": "NRG"
+  },
+  {
+    "security": "Nucor",
+    "ticker": "NUE"
+  },
+  {
+    "security": "Nvidia",
+    "ticker": "NVDA"
+  },
+  {
+    "security": "NVR, Inc.",
+    "ticker": "NVR"
+  },
+  {
+    "security": "NXP Semiconductors",
+    "ticker": "NXPI"
+  },
+  {
+    "security": "O\u2019Reilly Automotive",
+    "ticker": "ORLY"
+  },
+  {
+    "security": "Occidental Petroleum",
+    "ticker": "OXY"
+  },
+  {
+    "security": "Old Dominion",
+    "ticker": "ODFL"
+  },
+  {
+    "security": "Omnicom Group",
+    "ticker": "OMC"
+  },
+  {
+    "security": "ON Semiconductor",
+    "ticker": "ON"
+  },
+  {
+    "security": "Oneok",
+    "ticker": "OKE"
+  },
+  {
+    "security": "Oracle Corporation",
+    "ticker": "ORCL"
+  },
+  {
+    "security": "Otis Worldwide",
+    "ticker": "OTIS"
+  },
+  {
+    "security": "Paccar",
+    "ticker": "PCAR"
+  },
+  {
+    "security": "Packaging Corporation of America",
+    "ticker": "PKG"
+  },
+  {
+    "security": "Palantir Technologies",
+    "ticker": "PLTR"
+  },
+  {
+    "security": "Palo Alto Networks",
+    "ticker": "PANW"
+  },
+  {
+    "security": "Paramount Global",
+    "ticker": "PARA"
+  },
+  {
+    "security": "Parker Hannifin",
+    "ticker": "PH"
+  },
+  {
+    "security": "Paychex",
+    "ticker": "PAYX"
+  },
+  {
+    "security": "Paycom",
+    "ticker": "PAYC"
+  },
+  {
+    "security": "PayPal",
+    "ticker": "PYPL"
+  },
+  {
+    "security": "Pentair",
+    "ticker": "PNR"
+  },
+  {
+    "security": "PepsiCo",
+    "ticker": "PEP"
+  },
+  {
+    "security": "Pfizer",
+    "ticker": "PFE"
+  },
+  {
+    "security": "PG&E Corporation",
+    "ticker": "PCG"
+  },
+  {
+    "security": "Philip Morris International",
+    "ticker": "PM"
+  },
+  {
+    "security": "Phillips 66",
+    "ticker": "PSX"
+  },
+  {
+    "security": "Pinnacle West Capital",
+    "ticker": "PNW"
+  },
+  {
+    "security": "PNC Financial Services",
+    "ticker": "PNC"
+  },
+  {
+    "security": "Pool Corporation",
+    "ticker": "POOL"
+  },
+  {
+    "security": "PPG Industries",
+    "ticker": "PPG"
+  },
+  {
+    "security": "PPL Corporation",
+    "ticker": "PPL"
+  },
+  {
+    "security": "Principal Financial Group",
+    "ticker": "PFG"
+  },
+  {
+    "security": "Procter & Gamble",
+    "ticker": "PG"
+  },
+  {
+    "security": "Progressive Corporation",
+    "ticker": "PGR"
+  },
+  {
+    "security": "Prologis",
+    "ticker": "PLD"
+  },
+  {
+    "security": "Prudential Financial",
+    "ticker": "PRU"
+  },
+  {
+    "security": "Public Service Enterprise Group",
+    "ticker": "PEG"
+  },
+  {
+    "security": "PTC Inc.",
+    "ticker": "PTC"
+  },
+  {
+    "security": "Public Storage",
+    "ticker": "PSA"
+  },
+  {
+    "security": "PulteGroup",
+    "ticker": "PHM"
+  },
+  {
+    "security": "Quanta Services",
+    "ticker": "PWR"
+  },
+  {
+    "security": "Qualcomm",
+    "ticker": "QCOM"
+  },
+  {
+    "security": "Quest Diagnostics",
+    "ticker": "DGX"
+  },
+  {
+    "security": "Ralph Lauren Corporation",
+    "ticker": "RL"
+  },
+  {
+    "security": "Raymond James Financial",
+    "ticker": "RJF"
+  },
+  {
+    "security": "RTX Corporation",
+    "ticker": "RTX"
+  },
+  {
+    "security": "Realty Income",
+    "ticker": "O"
+  },
+  {
+    "security": "Regency Centers",
+    "ticker": "REG"
+  },
+  {
+    "security": "Regeneron Pharmaceuticals",
+    "ticker": "REGN"
+  },
+  {
+    "security": "Regions Financial Corporation",
+    "ticker": "RF"
+  },
+  {
+    "security": "Republic Services",
+    "ticker": "RSG"
+  },
+  {
+    "security": "ResMed",
+    "ticker": "RMD"
+  },
+  {
+    "security": "Revvity",
+    "ticker": "RVTY"
+  },
+  {
+    "security": "Rockwell Automation",
+    "ticker": "ROK"
+  },
+  {
+    "security": "Rollins, Inc.",
+    "ticker": "ROL"
+  },
+  {
+    "security": "Roper Technologies",
+    "ticker": "ROP"
+  },
+  {
+    "security": "Ross Stores",
+    "ticker": "ROST"
+  },
+  {
+    "security": "Royal Caribbean Group",
+    "ticker": "RCL"
+  },
+  {
+    "security": "S&P Global",
+    "ticker": "SPGI"
+  },
+  {
+    "security": "Salesforce",
+    "ticker": "CRM"
+  },
+  {
+    "security": "SBA Communications",
+    "ticker": "SBAC"
+  },
+  {
+    "security": "Schlumberger",
+    "ticker": "SLB"
+  },
+  {
+    "security": "Seagate Technology",
+    "ticker": "STX"
+  },
+  {
+    "security": "Sempra",
+    "ticker": "SRE"
+  },
+  {
+    "security": "ServiceNow",
+    "ticker": "NOW"
+  },
+  {
+    "security": "Sherwin-Williams",
+    "ticker": "SHW"
+  },
+  {
+    "security": "Simon Property Group",
+    "ticker": "SPG"
+  },
+  {
+    "security": "Skyworks Solutions",
+    "ticker": "SWKS"
+  },
+  {
+    "security": "J.M. Smucker Company (The)",
+    "ticker": "SJM"
+  },
+  {
+    "security": "Smurfit Westrock",
+    "ticker": "SW"
+  },
+  {
+    "security": "Snap-on",
+    "ticker": "SNA"
+  },
+  {
+    "security": "Solventum",
+    "ticker": "SOLV"
+  },
+  {
+    "security": "Southern Company",
+    "ticker": "SO"
+  },
+  {
+    "security": "Southwest Airlines",
+    "ticker": "LUV"
+  },
+  {
+    "security": "Stanley Black & Decker",
+    "ticker": "SWK"
+  },
+  {
+    "security": "Starbucks",
+    "ticker": "SBUX"
+  },
+  {
+    "security": "State Street Corporation",
+    "ticker": "STT"
+  },
+  {
+    "security": "Steel Dynamics",
+    "ticker": "STLD"
+  },
+  {
+    "security": "Steris",
+    "ticker": "STE"
+  },
+  {
+    "security": "Stryker Corporation",
+    "ticker": "SYK"
+  },
+  {
+    "security": "Supermicro",
+    "ticker": "SMCI"
+  },
+  {
+    "security": "Synchrony Financial",
+    "ticker": "SYF"
+  },
+  {
+    "security": "Synopsys",
+    "ticker": "SNPS"
+  },
+  {
+    "security": "Sysco",
+    "ticker": "SYY"
+  },
+  {
+    "security": "T-Mobile US",
+    "ticker": "TMUS"
+  },
+  {
+    "security": "T. Rowe Price",
+    "ticker": "TROW"
+  },
+  {
+    "security": "Take-Two Interactive",
+    "ticker": "TTWO"
+  },
+  {
+    "security": "Tapestry, Inc.",
+    "ticker": "TPR"
+  },
+  {
+    "security": "Targa Resources",
+    "ticker": "TRGP"
+  },
+  {
+    "security": "Target Corporation",
+    "ticker": "TGT"
+  },
+  {
+    "security": "TE Connectivity",
+    "ticker": "TEL"
+  },
+  {
+    "security": "Teledyne Technologies",
+    "ticker": "TDY"
+  },
+  {
+    "security": "Teradyne",
+    "ticker": "TER"
+  },
+  {
+    "security": "Tesla, Inc.",
+    "ticker": "TSLA"
+  },
+  {
+    "security": "Texas Instruments",
+    "ticker": "TXN"
+  },
+  {
+    "security": "Texas Pacific Land Corporation",
+    "ticker": "TPL"
+  },
+  {
+    "security": "Textron",
+    "ticker": "TXT"
+  },
+  {
+    "security": "Thermo Fisher Scientific",
+    "ticker": "TMO"
+  },
+  {
+    "security": "TJX Companies",
+    "ticker": "TJX"
+  },
+  {
+    "security": "TKO Group Holdings",
+    "ticker": "TKO"
+  },
+  {
+    "security": "Tractor Supply",
+    "ticker": "TSCO"
+  },
+  {
+    "security": "Trane Technologies",
+    "ticker": "TT"
+  },
+  {
+    "security": "TransDigm Group",
+    "ticker": "TDG"
+  },
+  {
+    "security": "Travelers Companies (The)",
+    "ticker": "TRV"
+  },
+  {
+    "security": "Trimble Inc.",
+    "ticker": "TRMB"
+  },
+  {
+    "security": "Truist Financial",
+    "ticker": "TFC"
+  },
+  {
+    "security": "Tyler Technologies",
+    "ticker": "TYL"
+  },
+  {
+    "security": "Tyson Foods",
+    "ticker": "TSN"
+  },
+  {
+    "security": "U.S. Bancorp",
+    "ticker": "USB"
+  },
+  {
+    "security": "Uber",
+    "ticker": "UBER"
+  },
+  {
+    "security": "UDR, Inc.",
+    "ticker": "UDR"
+  },
+  {
+    "security": "Ulta Beauty",
+    "ticker": "ULTA"
+  },
+  {
+    "security": "Union Pacific Corporation",
+    "ticker": "UNP"
+  },
+  {
+    "security": "United Airlines Holdings",
+    "ticker": "UAL"
+  },
+  {
+    "security": "United Parcel Service",
+    "ticker": "UPS"
+  },
+  {
+    "security": "United Rentals",
+    "ticker": "URI"
+  },
+  {
+    "security": "UnitedHealth Group",
+    "ticker": "UNH"
+  },
+  {
+    "security": "Universal Health Services",
+    "ticker": "UHS"
+  },
+  {
+    "security": "Valero Energy",
+    "ticker": "VLO"
+  },
+  {
+    "security": "Ventas",
+    "ticker": "VTR"
+  },
+  {
+    "security": "Veralto",
+    "ticker": "VLTO"
+  },
+  {
+    "security": "Verisign",
+    "ticker": "VRSN"
+  },
+  {
+    "security": "Verisk Analytics",
+    "ticker": "VRSK"
+  },
+  {
+    "security": "Verizon",
+    "ticker": "VZ"
+  },
+  {
+    "security": "Vertex Pharmaceuticals",
+    "ticker": "VRTX"
+  },
+  {
+    "security": "Viatris",
+    "ticker": "VTRS"
+  },
+  {
+    "security": "Vici Properties",
+    "ticker": "VICI"
+  },
+  {
+    "security": "Visa Inc.",
+    "ticker": "V"
+  },
+  {
+    "security": "Vistra Corp.",
+    "ticker": "VST"
+  },
+  {
+    "security": "Vulcan Materials Company",
+    "ticker": "VMC"
+  },
+  {
+    "security": "W. R. Berkley Corporation",
+    "ticker": "WRB"
+  },
+  {
+    "security": "W. W. Grainger",
+    "ticker": "GWW"
+  },
+  {
+    "security": "Wabtec",
+    "ticker": "WAB"
+  },
+  {
+    "security": "Walgreens Boots Alliance",
+    "ticker": "WBA"
+  },
+  {
+    "security": "Walmart",
+    "ticker": "WMT"
+  },
+  {
+    "security": "Walt Disney Company (The)",
+    "ticker": "DIS"
+  },
+  {
+    "security": "Warner Bros. Discovery",
+    "ticker": "WBD"
+  },
+  {
+    "security": "Waste Management",
+    "ticker": "WM"
+  },
+  {
+    "security": "Waters Corporation",
+    "ticker": "WAT"
+  },
+  {
+    "security": "WEC Energy Group",
+    "ticker": "WEC"
+  },
+  {
+    "security": "Wells Fargo",
+    "ticker": "WFC"
+  },
+  {
+    "security": "Welltower",
+    "ticker": "WELL"
+  },
+  {
+    "security": "West Pharmaceutical Services",
+    "ticker": "WST"
+  },
+  {
+    "security": "Western Digital",
+    "ticker": "WDC"
+  },
+  {
+    "security": "Weyerhaeuser",
+    "ticker": "WY"
+  },
+  {
+    "security": "Williams-Sonoma, Inc.",
+    "ticker": "WSM"
+  },
+  {
+    "security": "Williams Companies",
+    "ticker": "WMB"
+  },
+  {
+    "security": "Willis Towers Watson",
+    "ticker": "WTW"
+  },
+  {
+    "security": "Workday, Inc.",
+    "ticker": "WDAY"
+  },
+  {
+    "security": "Wynn Resorts",
+    "ticker": "WYNN"
+  },
+  {
+    "security": "Xcel Energy",
+    "ticker": "XEL"
+  },
+  {
+    "security": "Xylem Inc.",
+    "ticker": "XYL"
+  },
+  {
+    "security": "Yum! Brands",
+    "ticker": "YUM"
+  },
+  {
+    "security": "Zebra Technologies",
+    "ticker": "ZBRA"
+  },
+  {
+    "security": "Zimmer Biomet",
+    "ticker": "ZBH"
+  },
+  {
+    "security": "Zoetis",
+    "ticker": "ZTS"
+  },
+  {
+    "security": "SPDR S&P 500 ETF Trust",
+    "ticker": "SPY"
+  },
+  {
+    "security": "Vanguard Total Stock Market ETF",
+    "ticker": "VTI"
+  },
+  {
+    "security": "Invesco QQQ Trust (Nasdaq-100)",
+    "ticker": "QQQ"
+  },
+  {
+    "security": "iShares Core S&P 500 ETF",
+    "ticker": "IVV"
+  },
+  {
+    "security": "iShares Russell 2000 ETF",
+    "ticker": "IWM"
+  },
+  {
+    "security": "Technology Select Sector SPDR",
+    "ticker": "XLK"
+  },
+  {
+    "security": "Financial Select Sector SPDR",
+    "ticker": "XLF"
+  },
+  {
+    "security": "Healthcare Select Sector SPDR",
+    "ticker": "XLV"
+  },
+  {
+    "security": "Energy Select Sector SPDR",
+    "ticker": "XLE"
+  },
+  {
+    "security": "Vanguard Dividend Appreciation ETF",
+    "ticker": "VIG"
+  },
+  {
+    "security": "Vanguard FTSE Developed Markets ETF",
+    "ticker": "VEA"
+  },
+  {
+    "security": "Vanguard FTSE Emerging Markets ETF",
+    "ticker": "VWO"
+  },
+  {
+    "security": "iShares MSCI EAFE ETF",
+    "ticker": "EFA"
+  },
+  {
+    "security": "iShares Core U.S. Aggregate Bond ETF",
+    "ticker": "AGG"
+  },
+  {
+    "security": "Vanguard Total Bond Market ETF",
+    "ticker": "BND"
+  },
+  {
+    "security": "iShares iBoxx $ Investment Grade Corporate Bond ETF",
+    "ticker": "LQD"
+  },
+  {
+    "security": "iShares 20+ Year Treasury Bond ETF",
+    "ticker": "TLT"
+  },
+  {
+    "security": "SPDR Gold Shares",
+    "ticker": "GLD"
+  },
+  {
+    "security": "iShares Silver Trust",
+    "ticker": "SLV"
+  },
+  {
+    "security": "United States Oil Fund",
+    "ticker": "USO"
+  },
+  {
+    "security": "ARK Innovation ETF",
+    "ticker": "ARKK"
+  },
+  {
+    "security": "ProShares Ultra VIX Short-Term Futures ETF",
+    "ticker": "UVXY"
+  },
+  {
+    "security": "Schwab U.S. REIT ETF",
+    "ticker": "SCHH"
+  },
+  {
+    "security": "iShares TIPS Bond ETF",
+    "ticker": "TIP"
+  },
+  {
+    "security": "Vanguard Real Estate ETF",
+    "ticker": "VNQ"
+  }
+]
