@@ -135,3 +135,16 @@
     cursor: pointer;
     background: #222;
 }
+
+.errorText {
+    color: var(--risk-high);
+    font-size: 10px;
+    font-family: var(--font-ibm-mono), 'Courier New', Courier, monospace;
+    font-weight: 400;
+}
+
+.inputContainer {
+    display: flex;
+    align-items: center;
+    gap: 2px;
+}

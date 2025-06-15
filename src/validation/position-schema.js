@@ -4,19 +4,19 @@ export const BasePositionSchema = z.object({
     security: z.string().min(1, 'Security is required'),
     ticker: z.string().min(1, 'Ticker is required'),
     size: z.number()
-            .int('Size must be an integer')
-            .positive('Size must be positive'),
+            .int('Must be integer')
+            .positive('Must be positive'),
     entryPrice: z.number()
-                .positive('Entry price must be positive'),
+                .positive('Must be positive'),
 
     exitPrice: z
         .number()
-        .positive('Exit price must be positive')
+        .positive('Must be positive')
         .optional(),
 
     stopLoss: z
         .number()
-        .positive('Stop loss must be positive')
+        .positive('Must be positive')
         .optional(),
 });
 

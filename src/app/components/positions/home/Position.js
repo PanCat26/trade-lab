@@ -1,11 +1,13 @@
 'use client'
 
 import { useState } from 'react';
+import { BasePositionSchema } from '@/validation/position-schema';
 import styles from './Position.module.css';
 
 export default function Position({ position, onUpdate, onDelete }) {
     const [showDetails, setShowDetails] = useState(false);
     const [pendingUpdate, setPendingUpdate] = useState({});
+    const [fieldErrors, setFieldErrors] = useState({});
 
     const handleToggleDetails = () => {
         setShowDetails(prev => {
@@ -14,11 +16,19 @@ export default function Position({ position, onUpdate, onDelete }) {
         });
     };
 
+    const validateField = (field, value) => {
+        const schema = BasePositionSchema.shape[field];
+        if (!schema) return;
+
+        const result = schema.safeParse(value);
+        setFieldErrors(prevErrors => ({
+            ...prevErrors,
+            [field]: result.success ? undefined : result.error.errors[0].message
+        }));
+    };
+
     const handleChange = (field, value) => {
-        // Allow undefined for all fields except size, type, entryPrice
-        if (["size", "type", "entryPrice"].includes(field) && value === undefined) {
-            return;
-        }
+        validateField(field, value);
         setPendingUpdate(previousFields => ({ ...previousFields, [field]: value }));
     };
 
@@ -28,9 +38,7 @@ export default function Position({ position, onUpdate, onDelete }) {
     };
 
     const handleDelete = () => {
-        if (onDelete) {
-            onDelete(position);
-        }
+        onDelete(position);
     };
 
     return (
@@ -63,26 +71,83 @@ export default function Position({ position, onUpdate, onDelete }) {
                     <div className={styles.detailsHeader}>Details</div>
                     <div className={styles.detailsRow}>
                         <span>Position type</span>
-                        <select className={styles.input} value={pendingUpdate.type ?? position.type} onChange={e => handleChange('type', e.target.value)}>
+                        <select
+                            className={styles.input}
+                            value={pendingUpdate.type ?? position.type}
+                            onChange={e => handleChange('type', e.target.value)}
+                            style={{ borderColor: fieldErrors.type ? 'var(--risk-high)' : '' }}
+                        >
                             <option value="long">Long</option>
                             <option value="short">Short</option>
                         </select>
                     </div>
                     <div className={styles.detailsRow}>
                         <span>Position size</span>
-                        <input className={styles.input} type="number" value={pendingUpdate.size ?? position.size ?? ''} onChange={e => handleChange('size', e.target.value === '' ? undefined : Number(e.target.value))} />
+                        <div className={styles.inputContainer}>
+                            {fieldErrors.size && (
+                                <span title={fieldErrors.size}>
+                                    <svg xmlns="http://www.w3.org/2000/svg" height="18px" viewBox="0 0 24 24" width="18px" fill="#D32F2F"><path d="M11 15h2v2h-2v-2zm0-8h2v6h-2V7zm.99-5C6.47 2 2 6.48 2 12s4.47 10 9.99 10C17.52 22 22 17.52 22 12S17.52 2 11.99 2zM12 20c-4.42 0-8-3.58-8-8s3.58-8 8-8 8 3.58 8 8-3.58 8-8 8z"/></svg>
+                                </span>
+                            )}
+                            <input
+                                className={styles.input}
+                                type="number"
+                                value={('size' in pendingUpdate ? pendingUpdate.size ?? '' : position.size ?? '')}
+                                onChange={e => handleChange('size', e.target.value === '' ? undefined : Number(e.target.value))}
+                                style={{ borderColor: fieldErrors.size ? 'var(--risk-high)' : '' }}
+                            />
+                        </div>
                     </div>
                     <div className={styles.detailsRow}>
                         <span>Entry price</span>
-                        <input className={styles.input} type="number" value={pendingUpdate.entryPrice ?? position.entryPrice ?? ''} onChange={e => handleChange('entryPrice', e.target.value === '' ? undefined : Number(e.target.value))} />
+                        <div className={styles.inputContainer}>
+                            {fieldErrors.entryPrice && (
+                                <span className={styles.errorTooltip} title={fieldErrors.entryPrice}>
+                                    <svg xmlns="http://www.w3.org/2000/svg" height="18px" viewBox="0 0 24 24" width="18px" fill="#D32F2F"><path d="M11 15h2v2h-2v-2zm0-8h2v6h-2V7zm.99-5C6.47 2 2 6.48 2 12s4.47 10 9.99 10C17.52 22 22 17.52 22 12S17.52 2 11.99 2zM12 20c-4.42 0-8-3.58-8-8s3.58-8 8-8 8 3.58 8 8-3.58 8-8 8z"/></svg>
+                                </span>
+                            )}
+                            <input
+                                className={styles.input}
+                                type="number"
+                                value={('entryPrice' in pendingUpdate ? pendingUpdate.entryPrice ?? '' : position.entryPrice ?? '')}
+                                onChange={e => handleChange('entryPrice', e.target.value === '' ? undefined : Number(e.target.value))}
+                                style={{ borderColor: fieldErrors.entryPrice ? 'var(--risk-high)' : '' }}
+                            />
+                        </div>
                     </div>
                     <div className={styles.detailsRow}>
                         <span>Exit price</span>
-                        <input className={styles.input} type="number" value={('exitPrice' in pendingUpdate) ? (pendingUpdate.exitPrice === undefined ? '' : pendingUpdate.exitPrice) : (position.exitPrice ?? '')} onChange={e => handleChange('exitPrice', e.target.value === '' ? undefined : Number(e.target.value))} />
+                        <div className={styles.inputContainer}>
+                            {fieldErrors.exitPrice && (
+                                <span className={styles.errorTooltip} title={fieldErrors.exitPrice}>
+                                    <svg xmlns="http://www.w3.org/2000/svg" height="18px" viewBox="0 0 24 24" width="18px" fill="#D32F2F"><path d="M11 15h2v2h-2v-2zm0-8h2v6h-2V7zm.99-5C6.47 2 2 6.48 2 12s4.47 10 9.99 10C17.52 22 22 17.52 22 12S17.52 2 11.99 2zM12 20c-4.42 0-8-3.58-8-8s3.58-8 8-8 8 3.58 8 8-3.58 8-8 8z"/></svg>
+                                </span>
+                            )}
+                            <input
+                                className={styles.input}
+                                type="number"
+                                value={('exitPrice' in pendingUpdate) ? (pendingUpdate.exitPrice === undefined ? '' : pendingUpdate.exitPrice) : (position.exitPrice ?? '')}
+                                onChange={e => handleChange('exitPrice', e.target.value === '' ? undefined : Number(e.target.value))}
+                                style={{ borderColor: fieldErrors.exitPrice ? 'var(--risk-high)' : '' }}
+                            />
+                        </div>
                     </div>
                     <div className={styles.detailsRow}>
                         <span>Stop loss</span>
-                        <input className={styles.input} type="number" value={('stopLoss' in pendingUpdate) ? (pendingUpdate.stopLoss === undefined ? '' : pendingUpdate.stopLoss) : (position.stopLoss ?? '')} onChange={e => handleChange('stopLoss', e.target.value === '' ? undefined : Number(e.target.value))} />
+                        <div className={styles.inputContainer}>
+                            {fieldErrors.stopLoss && (
+                                <span className={styles.errorTooltip} title={fieldErrors.stopLoss}>
+                                    <svg xmlns="http://www.w3.org/2000/svg" height="18px" viewBox="0 0 24 24" width="18px" fill="#D32F2F"><path d="M11 15h2v2h-2v-2zm0-8h2v6h-2V7zm.99-5C6.47 2 2 6.48 2 12s4.47 10 9.99 10C17.52 22 22 17.52 22 12S17.52 2 11.99 2zM12 20c-4.42 0-8-3.58-8-8s3.58-8 8-8 8 3.58 8 8-3.58 8-8 8z"/></svg>
+                                </span>
+                            )}
+                            <input
+                                className={styles.input}
+                                type="number"
+                                value={('stopLoss' in pendingUpdate) ? (pendingUpdate.stopLoss === undefined ? '' : pendingUpdate.stopLoss) : (position.stopLoss ?? '')}
+                                onChange={e => handleChange('stopLoss', e.target.value === '' ? undefined : Number(e.target.value))}
+                                style={{ borderColor: fieldErrors.stopLoss ? 'var(--risk-high)' : '' }}
+                            />
+                        </div>
                     </div>
                     <div className={styles.updateButtonRow}>
                         <button className={styles.updateButton} onClick={handleUpdate} aria-label={`Update position for ${position.security}`}>Update</button>
