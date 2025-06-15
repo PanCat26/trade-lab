@@ -20,7 +20,7 @@ export const BasePositionSchema = z.object({
         .optional(),
 });
 
-export const FullPositionSchema = PositionBaseSchema.superRefine((data, context) => {
+export const FullPositionSchema = BasePositionSchema.superRefine((data, context) => {
   if (data.exitPrice !== undefined) {
     if (data.type === 'long' && data.exitPrice <= data.entryPrice) {
       context.addIssue({
