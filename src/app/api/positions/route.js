@@ -1,15 +1,34 @@
 import positionService from "@/services/position-service";
+import { FullPositionSchema } from "@/validation/position-schema";
 
 export async function GET(request) {
-    const url = new URL(request.url);
-    const options = Object.fromEntries(url.searchParams);
+    try {
+        const url = new URL(request.url);
+        const options = Object.fromEntries(url.searchParams);
 
-    const positions = await positionService.getAll(options);
-    return new Response(JSON.stringify(positions), { status: 200 });
+        const positions = await positionService.getAll(options);
+        return new Response(JSON.stringify(positions), { status: 200 });
+    } catch (error) {
+        console.error("Server error:", error);
+        return new Response("Internal Server Error", { status: 500 });
+    }
 }
 
 export async function POST(request) {
-    const newPosition = await request.json();
-    await positionService.add(newPosition);
-    return new Response("Position added successfully", { status: 201 });
+    try {
+        const newPosition = await request.json();
+
+        // Validate the position using Zod
+        const validationResult = FullPositionSchema.safeParse(newPosition);
+        if (!validationResult.success) {
+            const errors = validationResult.error.errors.map(err => err.message);
+            return new Response(errors, { status: 400 });
+        }
+
+        await positionService.add(newPosition);
+        return new Response(null, { status: 201 });
+    } catch (error) {
+        console.error("Server error:", error);
+        return new Response("Internal Server Error", { status: 500 });
+    }
 }
