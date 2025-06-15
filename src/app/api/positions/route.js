@@ -10,7 +10,7 @@ export async function GET(request) {
         return new Response(JSON.stringify(positions), { status: 200 });
     } catch (error) {
         console.error("Server error:", error);
-        return new Response("Internal Server Error", { status: 500 });
+        return new Response(JSON.stringify({ error: "Internal server error" }), { status: 500 });
     }
 }
 
@@ -22,13 +22,13 @@ export async function POST(request) {
         const validationResult = FullPositionSchema.safeParse(newPosition);
         if (!validationResult.success) {
             const errors = validationResult.error.errors.map(err => err.message);
-            return new Response(errors, { status: 400 });
+            return new Response(JSON.stringify({ error: "Validation error", details: errors }), { status: 400 });
         }
 
         await positionService.add(newPosition);
         return new Response(null, { status: 201 });
     } catch (error) {
         console.error("Server error:", error);
-        return new Response("Internal Server Error", { status: 500 });
+        return new Response(JSON.stringify({ error: "Internal server error" }), { status: 500 });
     }
 }
