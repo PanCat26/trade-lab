@@ -169,6 +169,7 @@ export default function Position({ position, onUpdate, onDelete }) {
                             className={styles.updateButton}
                             onClick={handleUpdate}
                             disabled={Object.values(fieldErrors).some(error => error)}
+                            aria-label={`Update position for ${position.security}`}
                         >
                             Update
                         </button>

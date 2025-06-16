@@ -11,15 +11,15 @@ describe("Positions/Risks API", () => {
     describe("POST", () => {
         it("Should return risks with status 200", async () => {
             const mockRisks = [
-                { id: "1", risk: "low" },
-                { id: "2", risk: "medium" },
-                { id: "3", risk: "high" }
+                { id: 1, risk: "low" },
+                { id: 2, risk: "medium" },
+                { id: 3, risk: "high" }
             ];
             positionService.getRisksByIds.mockResolvedValue(mockRisks);
 
             const request = new Request("http://localhost/api/positions/risks", {
                 method: "POST",
-                body: JSON.stringify({ ids: ["1", "2", "3"] })
+                body: JSON.stringify({ ids: [1, 2, 3] })
             });
             const response = await POST(request);
 
@@ -33,7 +33,7 @@ describe("Positions/Risks API", () => {
 
             const request = new Request("http://localhost/api/positions/risks", {
                 method: "POST",
-                body: JSON.stringify({ ids: ["1", "2", "3"] })
+                body: JSON.stringify({ ids: [1, 2, 3] })
             });
             const response = await POST(request);
 
