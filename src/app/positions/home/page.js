@@ -2,8 +2,8 @@
 
 import { useState, useEffect, useCallback, useRef } from 'react';
 import InfiniteScroll from 'react-infinite-scroll-component';
-import Position from '@/app/components/positions/home/Position';
-import AddMenu from '@/app/components/positions/home/AddMenu';
+import Position from '@/components/positions/home/Position';
+import AddMenu from '@/components/positions/home/AddMenu';
 import positionProxy from '@/proxies/position-proxy';
 import styles from './page.module.css';
 
