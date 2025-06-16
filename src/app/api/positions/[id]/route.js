@@ -3,9 +3,9 @@ import { FullPositionSchema } from "@/validation/position-schema";
 
 export async function GET(request, { params }) {
     try {
-        const { id } = params;
-        const position = await positionService.getById(id);
+        const id = Number((await params).id);
 
+        const position = await positionService.getById(id);
         if (!position) {
             return new Response(JSON.stringify({ error: "Position not found" }), { status: 404 });
         }
@@ -19,7 +19,7 @@ export async function GET(request, { params }) {
 
 export async function DELETE(request, { params }) {
     try {
-        const { id } = params;
+        const id = Number((await params).id);
 
         const position = await positionService.getById(id);
         if (!position) {
@@ -36,7 +36,7 @@ export async function DELETE(request, { params }) {
 
 export async function PATCH(request, { params }) {
     try {
-        const { id } = params;
+        const id = Number((await params).id);
         const updatedPosition = await request.json();
 
         // Validate the updated position using Zod

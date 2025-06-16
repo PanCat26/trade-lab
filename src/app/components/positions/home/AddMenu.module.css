@@ -74,9 +74,14 @@
     border: 2px solid black;
 }
 
+.addButtonRow {
+    margin-top: 16px;
+    display: flex;
+    gap: 8px;
+}
+
 .addButton {
     width: fit-content;
-    margin-top: 16px;
     border: none;
     padding: 6px 10px;
     background-color: var(--add-run-button-color);
@@ -87,3 +92,27 @@
     cursor: pointer;
 }
 
+.addButton:disabled {
+    background-color: rgba(0, 0, 0, 0.25);
+    cursor: not-allowed;
+}
+
+.inputContainer {
+    display: flex;
+    align-items: center;
+    gap: 2px;
+}
+
+.errorContainer {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    gap: 2px;
+}
+
+.errorContainer > span {
+    color: var(--risk-high);
+    font-size: 12px;
+    font-family: var(--font-ibm-mono), 'Courier New', Courier, monospace;
+    font-weight: 400;
+}

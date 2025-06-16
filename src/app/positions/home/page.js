@@ -12,6 +12,7 @@ const PAGE_SIZE = 20;
 export default function Page() {
 	const pageRef = useRef(1);
 	const reloadIdRef = useRef(0);
+	const [shouldRecomputeRisks, setShouldRecomputeRisks] = useState(false);
 	const [positions, setPositions] = useState([]);
 	const [hasMore, setHasMore] = useState(true);
 	const [toast, setToast] = useState('');
@@ -21,32 +22,31 @@ export default function Page() {
 	const [hasStopLossFilter, setHasStopLossFilter] = useState(false);
 	const [addMenu, setAddMenu] = useState(false);
 
-	const recomputeRisks = (positions) => {
+	const recomputeRisks = async () => {
 		if (!positions.length) return;
 		const ids = positions.map(position => position.id);
 
 		const pastReloadId = reloadIdRef.current;
 
-		(async () => {
-			try {
-				const risks = await positionProxy.getRisksByIds(ids);
-				if (pastReloadId !== reloadIdRef.current) return;
+		try {
+			const risks = await positionProxy.getRisksByIds(ids);
 
-				const riskMap = {};
-				risks.forEach(({id, risk}) => { riskMap[id] = risk; });
+			if (pastReloadId !== reloadIdRef.current) return;
 
-				setPositions(previousPositions => previousPositions.map(position => {
-					if (riskMap.hasOwnProperty(position.id)) {
-						return { ...position, risk: riskMap[position.id] };
-					}
-					return position;
-				}));
-			} catch (error) {
-				console.error('Failed to update risks:', error);
-				setToast('Failed to fetch risks. Please try again.');
-				setTimeout(() => setToast(''), 2000);
-			}
-		})();
+			const riskMap = {};
+			risks.forEach(({id, risk}) => { riskMap[id] = risk; });
+
+			setPositions(previousPositions => previousPositions.map(position => {
+				if (riskMap.hasOwnProperty(position.id)) {
+					return { ...position, risk: riskMap[position.id] };
+				}
+				return position;
+			}));
+		} catch (error) {
+			console.error('Failed to update risks:', error);
+			setToast('Failed to fetch risks. Please try again.');
+			setTimeout(() => setToast(''), 2000);
+		}
 	};
 
 	const loadNextPage = useCallback(async () => {
@@ -86,6 +86,13 @@ export default function Page() {
 		loadNextPage();
 	}, [sortBy, sortOrder, typeFilter, hasStopLossFilter]);
 
+	useEffect(() => {
+		if (shouldRecomputeRisks) {
+			recomputeRisks();
+			setShouldRecomputeRisks(false);
+		}
+	}, [shouldRecomputeRisks]);
+
 	const handleUpdate = async (updatedPosition, originalPosition) => {
 		try {
 			await positionProxy.update(updatedPosition);
@@ -101,11 +108,8 @@ export default function Page() {
 				reset();
 				loadNextPage();
 			} else {
-				setPositions((previousPositions) => {
-					const newPositions = previousPositions.map(position => (position.id === updatedPosition.id ? updatedPosition : position));
-					recomputeRisks(newPositions);
-					return newPositions;
-				});
+				setPositions(previousPositions => previousPositions.map(position => (position.id === updatedPosition.id ? updatedPosition : position)));
+				setShouldRecomputeRisks(true);
 			}
 			setToast('Position updated successfully!');
 			setTimeout(() => setToast(''), 2000);
@@ -113,17 +117,15 @@ export default function Page() {
 			console.error('Failed to update position:', error);
 			setToast('Update failed. Please try again.');
 			setTimeout(() => setToast(''), 2000);
+			throw error; // Re-throw to let the component handle it
 		}
 	};
 
 	const handleDelete = async (position) => {
 		try {
 			await positionProxy.delete(position.id);
-			setPositions((previousPositions) => {
-				const newPositions = previousPositions.filter(p => p.id !== position.id);
-				recomputeRisks(newPositions);
-				return newPositions;
-			});
+			setPositions((previousPositions) => previousPositions.filter(p => p.id !== position.id));
+			setShouldRecomputeRisks(true);
 			setToast('Position deleted!');
 			setTimeout(() => setToast(''), 2000);
 		} catch (error) {
@@ -134,7 +136,6 @@ export default function Page() {
 	};
 
 	const handleAdd = async (newPosition) => {
-		console.log('Adding new position:', newPosition);
 		try {
 			await positionProxy.add(newPosition);
 			reset();
@@ -146,6 +147,7 @@ export default function Page() {
 			console.error('Failed to add position:', error);
 			setToast('Failed to add position. Please try again.');
 			setTimeout(() => setToast(''), 2000);
+			throw error; // Re-throw to let the component handle it
 		}
 	};
 

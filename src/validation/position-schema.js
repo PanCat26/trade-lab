@@ -1,8 +1,8 @@
 import { z } from 'zod';
 
 export const BasePositionSchema = z.object({
-    security: z.string().min(1, 'Security is required'),
-    ticker: z.string().min(1, 'Ticker is required'),
+    security: z.string({required_error: "Security is required"}),
+    type: z.enum(['long', 'short']),
     size: z.number()
             .int('Must be integer')
             .positive('Must be positive'),
@@ -25,7 +25,7 @@ export const FullPositionSchema = BasePositionSchema.superRefine((data, context)
     if (data.type === 'long' && data.exitPrice <= data.entryPrice) {
       context.addIssue({
         code: z.ZodIssueCode.custom,
-        message: 'Exit price must be greater than entry price',
+        message: 'Exit price must be above entry price',
         path: ['exitPrice'],
       });
     }
@@ -33,7 +33,7 @@ export const FullPositionSchema = BasePositionSchema.superRefine((data, context)
     if (data.type === 'short' && data.exitPrice >= data.entryPrice) {
       context.addIssue({
         code: z.ZodIssueCode.custom,
-        message: 'Exit price must be less than entry price',
+        message: 'Exit price must be below entry price',
         path: ['exitPrice'],
       });
     }
@@ -43,7 +43,7 @@ export const FullPositionSchema = BasePositionSchema.superRefine((data, context)
     if (data.type === 'long' && data.stopLoss >= data.entryPrice) {
       context.addIssue({
         code: z.ZodIssueCode.custom,
-        message: 'Stop loss must be less than entry price',
+        message: 'Stop loss must be below entry price',
         path: ['stopLoss'],
       });
     }
@@ -51,7 +51,7 @@ export const FullPositionSchema = BasePositionSchema.superRefine((data, context)
     if (data.type === 'short' && data.stopLoss <= data.entryPrice) {
       context.addIssue({
         code: z.ZodIssueCode.custom,
-        message: 'Stop loss must be greater than entry price',
+        message: 'Stop loss must be above entry price',
         path: ['stopLoss'],
       });
     }

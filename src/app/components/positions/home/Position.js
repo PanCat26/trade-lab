@@ -8,6 +8,7 @@ export default function Position({ position, onUpdate, onDelete }) {
     const [showDetails, setShowDetails] = useState(false);
     const [pendingUpdate, setPendingUpdate] = useState({});
     const [fieldErrors, setFieldErrors] = useState({});
+    const [overallErrors, setOverallErrors] = useState([]);
 
     const handleToggleDetails = () => {
         setShowDetails(prev => {
@@ -32,13 +33,20 @@ export default function Position({ position, onUpdate, onDelete }) {
         setPendingUpdate(previousFields => ({ ...previousFields, [field]: value }));
     };
 
-    const handleUpdate = () => {
-        onUpdate({ ...position, ...pendingUpdate }, position);
-        setPendingUpdate({});
+    const handleUpdate = async () => {
+        try {
+            await onUpdate({ ...position, ...pendingUpdate }, position);
+            setPendingUpdate({});
+            setOverallErrors([]);
+        } catch (error) {
+            if (error.type === 'Validation error') {
+                setOverallErrors(error.details);
+            }
+        }
     };
 
-    const handleDelete = () => {
-        onDelete(position);
+    const handleDelete = async () => {
+        await onDelete(position);
     };
 
     return (
@@ -149,8 +157,21 @@ export default function Position({ position, onUpdate, onDelete }) {
                             />
                         </div>
                     </div>
+                    <div className={styles.overallErrorsContainer}>
+                        {overallErrors.map((error, index) => (
+                            <span key={index}>
+                                {error}!
+                            </span>
+                        ))}
+                    </div>
                     <div className={styles.updateButtonRow}>
-                        <button className={styles.updateButton} onClick={handleUpdate} aria-label={`Update position for ${position.security}`}>Update</button>
+                        <button
+                            className={styles.updateButton}
+                            onClick={handleUpdate}
+                            disabled={Object.values(fieldErrors).some(error => error)}
+                        >
+                            Update
+                        </button>
                     </div>
                 </div>
             )}
