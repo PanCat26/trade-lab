@@ -9,7 +9,7 @@ const ibmMono = IBM_Plex_Mono({
 
 export const metadata = {};
 
-export default function RootLayout({ children }) {
+export default function Layout({ children }) {
   return (
     <html lang="en">
       <body className={`${ibmMono.variable}`}>

@@ -1,7 +1,7 @@
 import styles from './layout.module.css';
 import NavigationBar from '../../components/positions/NavigationBar';
 
-export default function PositionsLayout({ children }) {
+export default function Layout({ children }) {
     return (
         <div className={styles.positionsContainer}>
             <NavigationBar />
