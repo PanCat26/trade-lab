@@ -14,55 +14,6 @@
   box-sizing: border-box;
 }
 
-header {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  height: 96px;
-  padding: 22px 40px 22px 40px;
-  background-color: var(--background-grey-dark-1);
-}
-
-.logo {
-  border: none;
-  padding: 0;
-  background-color: transparent;
-  font-size: 40px;
-  font-family: var(--font-ibm-mono), 'Courier New', Courier, monospace;
-  font-weight: 600;
-  color: var(--text-grey-light-1);
-}
-
-.logo:hover {
-  cursor: pointer;
-}
-
 body {
   margin: 0;
-}
-
-main {
-  display: flex;
-  align-items: center;
-  height: calc(100vh - 96px);
-}
-
-.sidebar  {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  height: 100%;
-  width: 100px;
-  padding: 48px 16px 48px 16px;
-  background-color: var(--background-grey-dark-2);
-}
-
-.sidebar > button {
-  border: none;
-  padding: 0;
-  background-color: transparent;
-}
-
-.sidebar > button:hover {
-  cursor: pointer;
 }
