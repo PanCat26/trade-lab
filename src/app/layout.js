@@ -7,7 +7,9 @@ const ibmMono = IBM_Plex_Mono({
   variable: '--font-ibm-mono',
 });
 
-export const metadata = {};
+export const metadata = {
+  title: 'TradeLab'
+};
 
 export default function Layout({ children }) {
   return (
