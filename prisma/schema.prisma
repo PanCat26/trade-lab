@@ -24,6 +24,6 @@ model Position {
   exitPrice Float?
   stopLoss Float?
 
-  strategyId Int       
+  strategyId Int
   strategy Strategy @relation(fields: [strategyId], references: [id])
 }
