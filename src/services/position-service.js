@@ -1,4 +1,4 @@
-import positionRepository from "@/repositories/position-repository";
+import positionRepository from "@/repositories/position-repository-in-memory";
 
 const positionService = {
     async getAll(options = {}) {

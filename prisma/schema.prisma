@@ -4,5 +4,26 @@ generator client {
 
 datasource db {
   provider = "postgresql"
-  url      = env("DATABASE_URL")
+  url = env("DATABASE_URL")
+}
+
+model Strategy {
+  id Int @id @default(autoincrement())
+  name String
+  createdAt DateTime @default(now())
+
+  positions Position[] 
+}
+
+model Position {
+  id Int @id @default(autoincrement())
+  ticker String
+  type String
+  size Int
+  entryPrice Float
+  exitPrice Float?
+  stopLoss Float?
+
+  strategyId Int       
+  strategy Strategy @relation(fields: [strategyId], references: [id])
 }
