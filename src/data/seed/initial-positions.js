@@ -6,7 +6,7 @@ const initialPositions= [
   { id: 5, ticker: 'NFLX', security: 'Netflix Inc', type: 'short', size: 8, entryPrice: 550, exitPrice: 520, stopLoss: 570 }
 ];
 
-const initialPositions1 = [
+const initialPositionsMany = [
   {
     "id": 1,
     "ticker": "AAPL",

@@ -18,13 +18,13 @@ const positionRepository = {
 
         const [ thresholds ] = await prisma.$queryRaw`
             SELECT
-            percentile_cont(0.33) WITHIN GROUP (ORDER BY 
+            percentile_disc(0.33) WITHIN GROUP (ORDER BY 
                 CASE 
                     WHEN "stopLoss" IS NULL THEN 999999999 
                     ELSE abs("entryPrice" - "stopLoss") * size 
                 END
             ) AS "lowThreshold",
-            percentile_cont(0.67) WITHIN GROUP (ORDER BY 
+            percentile_disc(0.67) WITHIN GROUP (ORDER BY 
                 CASE 
                     WHEN "stopLoss" IS NULL THEN 999999999 
                     ELSE abs("entryPrice" - "stopLoss") * size 
@@ -88,13 +88,13 @@ const positionRepository = {
 
         const [ thresholds ] = await prisma.$queryRaw`
             SELECT
-            percentile_cont(0.33) WITHIN GROUP (ORDER BY 
+            percentile_disc(0.33) WITHIN GROUP (ORDER BY 
                 CASE 
                     WHEN "stopLoss" IS NULL THEN 999999999 
                     ELSE abs("entryPrice" - "stopLoss") * size 
                 END
             ) AS "lowThreshold",
-            percentile_cont(0.67) WITHIN GROUP (ORDER BY 
+            percentile_disc(0.67) WITHIN GROUP (ORDER BY 
                 CASE 
                     WHEN "stopLoss" IS NULL THEN 999999999 
                     ELSE abs("entryPrice" - "stopLoss") * size 

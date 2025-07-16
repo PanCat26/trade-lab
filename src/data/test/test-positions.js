@@ -33,10 +33,10 @@ const testPositions = [
 
 const testPositionsShort= [
   { id: 1, ticker: 'AAPL', security: 'Apple Inc', type: 'long', size: 10, entryPrice: 150, exitPrice: 165, stopLoss: 140, strategyId: 1 },
-  { id: 2, ticker: 'GOOGL', security: 'Alphabet Inc', type: 'short', size: 5, entryPrice: 2800, exitPrice: 2600, stopLoss: 2850, strategyId: 2 },
-  { id: 3, ticker: 'TSLA', security: 'Tesla Inc', type: 'long', size: 12, entryPrice: 700, exitPrice: 750, stopLoss: 670, strategyId: 3 },
-  { id: 4, ticker: 'MSFT', security: 'Microsoft Corp', type: 'long', size: 20, entryPrice: 290, exitPrice: 305, strategyId: 4 },
-  { id: 5, ticker: 'NFLX', security: 'Netflix Inc', type: 'short', size: 8, entryPrice: 550, exitPrice: 520, stopLoss: 570, strategyId: 5 }
+  { id: 2, ticker: 'GOOGL', security: 'Alphabet Inc', type: 'short', size: 5, entryPrice: 2800, exitPrice: 2600, stopLoss: 2850, strategyId: 1 },
+  { id: 3, ticker: 'TSLA', security: 'Tesla Inc', type: 'long', size: 12, entryPrice: 700, exitPrice: 750, stopLoss: 670, strategyId: 1 },
+  { id: 4, ticker: 'MSFT', security: 'Microsoft Corp', type: 'long', size: 20, entryPrice: 290, exitPrice: 305, strategyId: 1 },
+  { id: 5, ticker: 'NFLX', security: 'Netflix Inc', type: 'short', size: 8, entryPrice: 550, exitPrice: 520, stopLoss: 570, strategyId: 1 }
 ];
 
 export { testPositions, testPositionsShort };

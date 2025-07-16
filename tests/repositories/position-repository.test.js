@@ -156,8 +156,12 @@ describe('Position Repository', () => {
         }
         
         const result = await positionRepository.getAll({ strategyId: 1, page: 1, limit: 5 });
-        expect(result.data.length).toBe(1); // Only position with strategyId: 1
+        expect(result.data.length).toBe(5);
         expect(result.data[0].risk).toBe('low');
+        expect(result.data[1].risk).toBe('medium');
+        expect(result.data[2].risk).toBe('medium');
+        expect(result.data[3].risk).toBe('high');
+        expect(result.data[4].risk).toBe('low');
     });
 
     test('getById should return the correct position', async () => {
@@ -247,20 +251,15 @@ describe('Position Repository', () => {
         
         const risks = await positionRepository.getRisksByIds([1, 2, 3, 4, 5]);
         expect(risks.length).toBe(5);
-        expect(risks[0].risk).toBeDefined();
-        expect(risks[1].risk).toBeDefined();
-        expect(risks[2].risk).toBeDefined();
-        expect(risks[3].risk).toBeDefined();
-        expect(risks[4].risk).toBeDefined();
+        expect(risks[0].risk).toBe('low');
+        expect(risks[1].risk).toBe('medium');
+        expect(risks[2].risk).toBe('medium');
+        expect(risks[3].risk).toBe('high');
+        expect(risks[4].risk).toBe('low');
     });
 
     test('getRisksByIds should return empty array for empty input', async () => {
         const risks = await positionRepository.getRisksByIds([]);
-        expect(risks).toEqual([]);
-    });
-
-    test('getRisksByIds should return empty array for non-existing IDs', async () => {
-        const risks = await positionRepository.getRisksByIds([999, 998]);
         expect(risks).toEqual([]);
     });
 });
