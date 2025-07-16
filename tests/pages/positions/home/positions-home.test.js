@@ -9,6 +9,15 @@ import Page from '@/app/(main)/positions/home/page';
 import positionProxy from '@/proxies/position-proxy';
 import { testPositionsShort } from '@/data/test/test-positions';
 
+jest.mock('next/navigation', () => ({
+    useSearchParams: () => ({
+        get: (key) => {
+            if (key === 'strategyId') return '1'; // Default strategyId for tests
+            return null;
+        }
+    })
+}));
+
 jest.mock('@/proxies/position-proxy');
 
 const mockPositionsGetAllNoParameters = testPositionsShort;
@@ -18,14 +27,14 @@ const mockPositionsScenarioGetAllSortSizeAscending = [...testPositionsShort].sor
 
 describe('Positions Home Page', () => {
     beforeEach(() => {
-        positionProxy.getAll.mockImplementation(({ page, limit, sortBy, order, filters }) => {
-            if (page === 1 && limit === 20 && sortBy === 'id' && order === 'asc' && Object.keys(filters).length === 0) {
+        positionProxy.getAll.mockImplementation(({ strategyId, page, limit, sortBy, order, filters }) => {
+            if (strategyId === 1 && page === 1 && limit === 20 && sortBy === 'id' && order === 'asc' && Object.keys(filters).length === 0) {
                 return Promise.resolve({ data: mockPositionsGetAllNoParameters, totalPositions: mockPositionsGetAllNoParameters.length, totalPages: 1 });
             }
-            if (page === 1 && limit === 20 && sortBy === 'id' && order === 'asc' && filters?.type === 'long') {
+            if (strategyId === 1 && page === 1 && limit === 20 && sortBy === 'id' && order === 'asc' && filters?.type === 'long') {
                 return Promise.resolve({ data: mockPositionsScenarioGetAllTypeLong, totalPositions: mockPositionsScenarioGetAllTypeLong.length, totalPages: 1 });
             }
-            if (page === 1 && limit === 20 && sortBy === 'size' && order === 'asc') {
+            if (strategyId === 1 && page === 1 && limit === 20 && sortBy === 'size' && order === 'asc') {
                 return Promise.resolve({ data: mockPositionsScenarioGetAllSortSizeAscending, totalPositions: mockPositionsScenarioGetAllSortSizeAscending.length, totalPages: 1 });
             }
             return Promise.resolve({ data: [], totalPositions: 0, totalPages: 0 });
