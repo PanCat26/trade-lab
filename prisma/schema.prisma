@@ -17,6 +17,7 @@ model Strategy {
 
 model Position {
   id Int @id @default(autoincrement())
+  security String
   ticker String
   type String
   size Int

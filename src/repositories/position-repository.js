@@ -6,7 +6,7 @@ const positionRepository = {
         if (filters.type) where.type = filters.type;
         if (filters.stopLoss) where.stopLoss = { not: null };
 
-        const [totalPositionsSize, positions] = await prisma.$transaction([
+        let [totalPositionsSize, positions] = await prisma.$transaction([
             prisma.position.count({ where }),
             prisma.position.findMany({
                 where,
@@ -16,23 +16,23 @@ const positionRepository = {
             }),
         ]);
 
-        const [ thresholds ] = await prisma.$queryRaw(`
+        const [ thresholds ] = await prisma.$queryRaw`
             SELECT
             percentile_cont(0.33) WITHIN GROUP (ORDER BY 
                 CASE 
-                    WHEN stopLoss IS NULL THEN 999999999 
-                    ELSE abs(entryPrice - stopLoss) * size 
+                    WHEN "stopLoss" IS NULL THEN 999999999 
+                    ELSE abs("entryPrice" - "stopLoss") * size 
                 END
             ) AS "lowThreshold",
             percentile_cont(0.67) WITHIN GROUP (ORDER BY 
                 CASE 
-                    WHEN stopLoss IS NULL THEN 999999999 
-                    ELSE abs(entryPrice - stopLoss) * size 
+                    WHEN "stopLoss" IS NULL THEN 999999999 
+                    ELSE abs("entryPrice" - "stopLoss") * size 
                 END
             ) AS "mediumThreshold"
             FROM "Position"
-            WHERE strategyId = ${strategyId}
-        `);
+            WHERE "strategyId" = ${strategyId}
+        `;
 
         positions = positions.map(p => {
             if (p.stopLoss === null) return { ...p, risk: 'high' };
@@ -86,23 +86,23 @@ const positionRepository = {
 
         const strategyId = positions[0].strategyId;
 
-        const [ thresholds ] = await prisma.$queryRaw(`
+        const [ thresholds ] = await prisma.$queryRaw`
             SELECT
             percentile_cont(0.33) WITHIN GROUP (ORDER BY 
                 CASE 
-                    WHEN stopLoss IS NULL THEN 999999999 
-                    ELSE abs(entryPrice - stopLoss) * size 
+                    WHEN "stopLoss" IS NULL THEN 999999999 
+                    ELSE abs("entryPrice" - "stopLoss") * size 
                 END
             ) AS "lowThreshold",
             percentile_cont(0.67) WITHIN GROUP (ORDER BY 
                 CASE 
-                    WHEN stopLoss IS NULL THEN 999999999 
-                    ELSE abs(entryPrice - stopLoss) * size 
+                    WHEN "stopLoss" IS NULL THEN 999999999 
+                    ELSE abs("entryPrice" - "stopLoss") * size 
                 END
             ) AS "mediumThreshold"
             FROM "Position"
-            WHERE strategyId = ${strategyId}
-        `);
+            WHERE "strategyId" = ${strategyId}
+        `;
 
         return positions.map(p => {
             if (p.stopLoss === null) {

@@ -1,7 +1,7 @@
 import positionRepository,  { setPositions } from '@/repositories/position-repository-in-memory';
 import { testPositions, testPositionsShort }  from '@/data/test/test-positions';
 
-describe('Position Repository', () => {
+describe('Position Repository In Memory', () => {
 
     beforeEach(async () => {
         await setPositions([...testPositions]);
