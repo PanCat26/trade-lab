@@ -1,6 +1,7 @@
 'use client';
 
 import { useState, useEffect, useCallback, useRef } from 'react';
+import { useSearchParams } from 'next/navigation';
 import InfiniteScroll from 'react-infinite-scroll-component';
 import Position from '@/components/positions/home/Position';
 import AddMenu from '@/components/positions/home/AddMenu';
@@ -10,6 +11,8 @@ import styles from './page.module.css';
 const PAGE_SIZE = 20;
 
 export default function Page() {
+	const searchParams = useSearchParams();
+	const strategyId = Number(searchParams.get('strategyId'));
 	const pageRef = useRef(1);
 	const reloadIdRef = useRef(0);
 	const [shouldRecomputeRisks, setShouldRecomputeRisks] = useState(false);
@@ -57,7 +60,7 @@ export default function Page() {
 		if (hasStopLossFilter) filters.stopLoss = true;
 
 		try {
-			const newPositions = await positionProxy.getAll({ page: pageRef.current, limit: PAGE_SIZE, sortBy, order: sortOrder, filters });
+			const newPositions = await positionProxy.getAll({ strategyId, page: pageRef.current, limit: PAGE_SIZE, sortBy, order: sortOrder, filters });
 			if (pastReloadId !== reloadIdRef.current) return;
 
 			setPositions(prev => [...prev, ...newPositions.data]);
@@ -184,7 +187,7 @@ export default function Page() {
 					{toast}
 				</div>
 			)}
-			{addMenu && <AddMenu onClose={() => setAddMenu(false)} onAdd={handleAdd} />}
+			{addMenu && <AddMenu onClose={() => setAddMenu(false)} onAdd={handleAdd} strategyId={strategyId} />}
       <div className={styles.positionsHeader}>
         <h1>Positions</h1>
 		<button className={styles.addButton} onClick={handleAddButtonClick}>

@@ -11,8 +11,8 @@ const options = usSecurities.map(({ security, ticker }) => ({
     value: JSON.stringify({ security, ticker }),
 }));
 
-export default function AddMenu({ onAdd, onClose }) {
-    const [newPosition, setNewPosition] = useState({ type: 'long' });
+export default function AddMenu({ onAdd, onClose, strategyId }) {
+    const [newPosition, setNewPosition] = useState({ type: 'long', strategyId });
     const [fieldErrors, setFieldErrors] = useState({});
     const [overallErrors, setOverallErrors] = useState([]);
 

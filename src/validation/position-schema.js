@@ -18,6 +18,10 @@ export const BasePositionSchema = z.object({
         .number()
         .positive('Must be positive')
         .optional(),
+
+    strategyId: z
+        .number()
+        .positive('Must be positive')
 });
 
 export const FullPositionSchema = BasePositionSchema.superRefine((data, context) => {

@@ -13,6 +13,7 @@ export async function GET(request) {
             }
         }
 
+        options.strategyId = Number(options.strategyId);
         options.page = Number(options.page);
         options.limit = Number(options.limit);
 
