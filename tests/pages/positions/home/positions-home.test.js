@@ -10,11 +10,8 @@ import positionProxy from '@/proxies/position-proxy';
 import { testPositionsShort } from '@/data/test/test-positions';
 
 jest.mock('next/navigation', () => ({
-    useSearchParams: () => ({
-        get: (key) => {
-            if (key === 'strategyId') return '1'; // Default strategyId for tests
-            return null;
-        }
+    useParams: () => ({
+        id: '1' // Default strategy ID for tests
     })
 }));
 

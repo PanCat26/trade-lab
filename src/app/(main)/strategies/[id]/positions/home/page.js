@@ -1,7 +1,7 @@
 'use client';
 
 import { useState, useEffect, useCallback, useRef } from 'react';
-import { useSearchParams } from 'next/navigation';
+import { useParams } from 'next/navigation';
 import InfiniteScroll from 'react-infinite-scroll-component';
 import Position from '@/components/positions/home/Position';
 import AddMenu from '@/components/positions/home/AddMenu';
@@ -11,8 +11,8 @@ import styles from './page.module.css';
 const PAGE_SIZE = 20;
 
 export default function Page() {
-	const searchParams = useSearchParams();
-	const strategyId = Number(searchParams.get('strategyId'));
+	const params = useParams();
+	const strategyId = Number(params.id);
 	const pageRef = useRef(1);
 	const reloadIdRef = useRef(0);
 	const [shouldRecomputeRisks, setShouldRecomputeRisks] = useState(false);
