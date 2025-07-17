@@ -5,7 +5,7 @@
 import React from 'react';
 import { render, screen, waitFor, fireEvent } from '@testing-library/react';
 import '@testing-library/jest-dom';
-import Page from '@/app/(main)/positions/home/page';
+import Page from '@/app/(main)/strategies/[id]/positions/home/page';
 import positionProxy from '@/proxies/position-proxy';
 import { testPositionsShort } from '@/data/test/test-positions';
 
