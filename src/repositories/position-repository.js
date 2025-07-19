@@ -1,20 +1,23 @@
 import prisma from '../../lib/prisma.js';
 
 const positionRepository = {
-    async getAll({ strategyId, page, limit, sortBy, order = 'asc', filters = {} } = {}) {
+    async getAll({ strategyId, page, limit, sortBy, order = 'asc', filters = {}, lengthOnly = false } = {}) {
         const where = { strategyId };
         if (filters.type) where.type = filters.type;
         if (filters.stopLoss) where.stopLoss = { not: null };
 
-        let [totalPositionsSize, positions] = await prisma.$transaction([
-            prisma.position.count({ where }),
-            prisma.position.findMany({
-                where,
-                skip: (page - 1) * limit,
-                take: limit,
-                orderBy: sortBy ? { [sortBy]: order } : undefined,
-            }),
-        ]);
+        const totalPositionsSize = await prisma.position.count({ where });
+
+        if (lengthOnly) {
+            return { totalPositionsSize, totalPages: Math.ceil(totalPositionsSize / limit) };
+        }
+
+        let positions = await prisma.position.findMany({
+            where,
+            skip: (page - 1) * limit,
+            take: limit,
+            orderBy: sortBy ? { [sortBy]: order } : undefined,
+        });
 
         const [ thresholds ] = await prisma.$queryRaw`
             SELECT

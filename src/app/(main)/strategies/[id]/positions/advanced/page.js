@@ -13,15 +13,15 @@ export default function Page() {
     useEffect(() => {
         const fetchCounts = async () => {
             try {
-                const longPositions = await positionProxy.getAll({ noPagination: true, filters: { type: 'long' } });
-                const shortPositions = await positionProxy.getAll({ noPagination: true, filters: { type: 'short' } });
-                const stopLossPositions = await positionProxy.getAll({ noPagination: true, filters: { stopLoss: true } });
-                const noStopLossPositions = await positionProxy.getAll({ noPagination: true, filters: { stopLoss: false } });
+                const longPositions = await positionProxy.getAll({ filters: { type: 'long' }, lengthOnly: true });
+                const shortPositions = await positionProxy.getAll({ filters: { type: 'short' }, lengthOnly: true });
+                const stopLossPositions = await positionProxy.getAll({ filters: { stopLoss: true }, lengthOnly: true });
+                const noStopLossPositions = await positionProxy.getAll({ filters: { stopLoss: false }, lengthOnly: true });
 
-                setLongCount(longPositions.data.length);
-                setShortCount(shortPositions.data.length);
-                setStopLossCount(stopLossPositions.data.length);
-                setNoStopLossCount(noStopLossPositions.data.length - stopLossPositions.data.length);
+                setLongCount(longPositions);
+                setShortCount(shortPositions);
+                setStopLossCount(stopLossPositions);
+                setNoStopLossCount(noStopLossPositions - stopLossPositions);
             } catch (error) {
                 console.error('Failed to fetch positions:', error);
             }
